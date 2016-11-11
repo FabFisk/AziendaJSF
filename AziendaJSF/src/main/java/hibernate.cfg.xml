@@ -1,0 +1,46 @@
+<?xml version='1.0' encoding='utf-8'?>
+<!-- ~ Hibernate, Relational Persistence for Idiomatic Java ~ ~ License: 
+	GNU Lesser General Public License (LGPL), version 2.1 or later. ~ See the 
+	lgpl.txt file in the root directory or <http://www.gnu.org/licenses/lgpl-2.1.html>. -->
+<!DOCTYPE hibernate-configuration PUBLIC
+"-//Hibernate/Hibernate Configuration DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-configuration-3.0.dtd">
+<hibernate-configuration>
+	<session-factory>	
+		<!-- Database connection settings -->
+<!-- Connessione al DB - Driver/URL/USER/PSW -->
+		<property name="connection.driver_class">oracle.jdbc.driver.OracleDriver</property>
+		<property name="connection.url">jdbc:oracle:thin:@localhost:1521:xe</property>
+		<property name="connection.username">Azienda</property>
+		<property name="connection.password">corso</property>
+		
+		<!-- JDBC connection pool (use the built-in) -->
+<!-- Connection Pool già inclueso -->
+		<property name="connection.pool_size">1</property>
+		
+		<!-- SQL dialect -->
+<!-- Quale linguaggio SQL (dialetto) usare -->
+		<!-- <property name="dialect">org.hibernate.dialect.MySQLDialect</property> -->
+		<property name="dialect">org.hibernate.dialect.Oracle10gDialect</property>
+		
+		<!-- Disable the second-level cache -->
+		<property name="cache.provider_class">org.hibernate.cache.internal.NoCacheProvider</property>
+		
+		<!-- Echo all executed SQL to stdout -->
+<!-- Mostra in console i comandi eseguiti -->
+		<property name="show_sql">true</property>
+		
+		<!-- Drop and re-create the database schema on startup -->
+<!-- Comportamento all'avvio -->
+		<property name="hbm2ddl.auto">update</property>
+		
+<!-- Inserire riga di mapping per ogni classe da mappare -->
+		<mapping class="it.alfasoft.fabrizio.bean.Utente" />
+		<mapping class="it.alfasoft.fabrizio.bean.Admin" />
+		<mapping class="it.alfasoft.fabrizio.bean.Dipendente" />
+		<mapping class="it.alfasoft.fabrizio.bean.Cliente" />			
+		<mapping class="it.alfasoft.fabrizio.rubrica.Rubrica" />			
+		<mapping class="it.alfasoft.fabrizio.rubrica.Voce" />	
+		<mapping class="it.alfasoft.fabrizio.bean.BustaPaga" />	
+	</session-factory>
+</hibernate-configuration>
