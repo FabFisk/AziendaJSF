@@ -81,11 +81,11 @@ public class Gestione {
 		dDAO.updateUser(d);
 	}
 
-	public List<Utente> getListClienti(){
+	public List<Cliente> getListClienti(){
 		return cDAO.getAll();
 	}
 	
-	public List<Utente> getListDipendenti(){
+	public List<Dipendente> getListDipendenti(){
 		return dDAO.getAll();
 	}
 	

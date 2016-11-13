@@ -25,8 +25,8 @@ public class DTController implements Serializable {
 	private static final long serialVersionUID = 1L;
 	
 	private Gestione g;
-	private List<Utente> clienti;
-	private List<Utente> dipendenti;
+	private List<Cliente> clienti;
+	private List<Dipendente> dipendenti;
 	
 	public DTController(){
 		g = new Gestione();
@@ -42,19 +42,19 @@ public class DTController implements Serializable {
 		this.g = g;
 	}
 
-	public List<Utente> getClienti() {
+	public List<Cliente> getClienti() {
 		return clienti;
 	}
 
-	public void setClienti(List<Utente> clienti) {
+	public void setClienti(List<Cliente> clienti) {
 		this.clienti = clienti;
 	}
 
-	public List<Utente> getDipendenti() {
+	public List<Dipendente> getDipendenti() {
 		return dipendenti;
 	}
 
-	public void setDipendenti(List<Utente> dipendenti) {
+	public void setDipendenti(List<Dipendente> dipendenti) {
 		this.dipendenti = dipendenti;
 	}
 
@@ -78,8 +78,7 @@ public class DTController implements Serializable {
 	
  	public void onRowEdit(RowEditEvent event) {
  		this.updateUtente((Utente) event.getObject());
-        FacesMessage msg = new FacesMessage("Utente Modificato", ((Utente) event.getObject()).getNome()+" "+((Utente) event.getObject()).getCognome());
-        FacesContext.getCurrentInstance().addMessage(null, msg);
+        
     }
      
     public void onRowCancel(RowEditEvent event) {

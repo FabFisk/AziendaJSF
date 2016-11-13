@@ -1,7 +1,6 @@
 package it.alfasoft.fabrizio.dao;
 
 import it.alfasoft.fabrizio.bean.Cliente;
-import it.alfasoft.fabrizio.bean.Utente;
 import it.alfasoft.fabrizio.utility.HibernateUtil;
 
 import java.util.ArrayList;
@@ -33,8 +32,8 @@ public class ClienteDAO {
 	}	
 	//2- Read
 	@SuppressWarnings("unchecked")
-	public List<Utente> getAll() {
-		List<Utente> clienti = new ArrayList<Utente>();
+	public List<Cliente> getAll() {
+		List<Cliente> clienti = new ArrayList<Cliente>();
 		Session session = HibernateUtil.openSession();
 		Transaction tx = null;
 		try {
