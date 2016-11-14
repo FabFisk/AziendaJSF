@@ -1,10 +1,9 @@
-package it.alfasoft.fabrizio.dao;
+package it.alfasoft.fabrizio.rubrica;
 
 import org.hibernate.Query;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
 
-import it.alfasoft.fabrizio.rubrica.Rubrica;
 import it.alfasoft.fabrizio.utility.HibernateUtil;
 
 public class RubricaDao {

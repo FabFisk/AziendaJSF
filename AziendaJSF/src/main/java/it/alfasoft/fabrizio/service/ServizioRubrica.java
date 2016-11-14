@@ -3,9 +3,9 @@ package it.alfasoft.fabrizio.service;
 import java.util.List;
 
 import it.alfasoft.fabrizio.rubrica.Rubrica;
+import it.alfasoft.fabrizio.rubrica.RubricaDao;
 import it.alfasoft.fabrizio.rubrica.Voce;
-import it.alfasoft.fabrizio.dao.RubricaDao;
-import it.alfasoft.fabrizio.dao.VoceDao;
+import it.alfasoft.fabrizio.rubrica.VoceDao;
 
 public class ServizioRubrica {	
 
