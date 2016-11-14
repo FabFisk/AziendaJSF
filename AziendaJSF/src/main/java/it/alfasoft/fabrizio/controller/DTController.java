@@ -3,7 +3,7 @@ package it.alfasoft.fabrizio.controller;
 import it.alfasoft.fabrizio.bean.Cliente;
 import it.alfasoft.fabrizio.bean.Dipendente;
 import it.alfasoft.fabrizio.bean.Utente;
-import it.alfasoft.fabrizio.service.Gestione;
+import it.alfasoft.fabrizio.service.GestioneUtenti;
 import it.alfasoft.fabrizio.utility.Ruolo;
 
 import java.io.Serializable;
@@ -24,23 +24,21 @@ public class DTController implements Serializable {
 	 */
 	private static final long serialVersionUID = 1L;
 	
-	private Gestione g;
+	private GestioneUtenti g;
 	private List<Cliente> clienti;
 	private List<Dipendente> dipendenti;
 	
 	public DTController(){
-		g = new Gestione();
+		g = new GestioneUtenti();
 		this.clienti = g.getListClienti();
 		this.dipendenti = g.getListDipendenti();
-		System.out.println(dipendenti.get(0).getCognome());
-		System.out.println(clienti.get(0).getCognome());
 	}
 
-	public Gestione getG() {
+	public GestioneUtenti getG() {
 		return g;
 	}
 
-	public void setG(Gestione g) {
+	public void setG(GestioneUtenti g) {
 		this.g = g;
 	}
 

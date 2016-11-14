@@ -8,7 +8,7 @@ import it.alfasoft.fabrizio.dao.*;
 import it.alfasoft.fabrizio.rubrica.*;
 import it.alfasoft.fabrizio.utility.Ruolo;
 
-public class Gestione {
+public class GestioneUtenti {
 	
 	UtenteDAO uDAO = new UtenteDAO();
 	AdminDAO aDAO = new AdminDAO();
