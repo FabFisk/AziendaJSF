@@ -19,67 +19,67 @@ public class Gestione {
 	BustaDAO bDAO = new BustaDAO();
 	ServizioRubrica s = new ServizioRubrica();
 	
-	public boolean existUserBoolean(String username, String password) {
-		
-		boolean res = false;
-		Utente u = uDAO.readUserUser(username);
-		if(u != null && u.getPassword().equals(password)){
-			res=true;
-		}
-		return res;
-
-	}
-	
-	public void setBeanUtente(Utente u){
-		uDAO.fillDatiUtente(u);
-	}
-	
-	public void setBeanAdmin(Admin a){
-		aDAO.fillDatiAdmin(a);
-	}
-	
-	public void setBeanCliente(Cliente c){
-		cDAO.fillDatiCliente(c);
-	}
-	
-	public void setBeanDipendente(Dipendente d){
-		dDAO.fillDatiDipendente(d);
-	}
-	
-	public boolean readClienteId(long id){
-		return cDAO.readUser(id) != null;		
-	}
-	
-	public boolean readDipendenteId(long id){
-		return dDAO.readUser(id) != null;		
-	}
-	
-	public Utente readUserUserPsw(String username, String password){
-		return uDAO.readUserUserPsw(username, password);
-	}
-	
-	public Utente readUserNomeCog(String nome, String cognome){
-		return uDAO.readUserNomeCog(nome, cognome);
-	}
-
-	
-	public Utente readUserUser(String username){
-		return uDAO.readUserUser(username);
-	}
-	
-	public void createCliente(Cliente c){
-		cDAO.createUser(c);
-		Rubrica r = s.registraRubrica(c.getNome(), c.getCognome());
-		c.setRubrica(r);
-		cDAO.updateUser(c);
-	}
-	
-	public void createDip(Dipendente d){
-		dDAO.createUser(d);
-		Rubrica r = s.registraRubrica(d.getNome(), d.getCognome());
-		d.setRubrica(r);
-		dDAO.updateUser(d);
-	}
+//	public boolean existUserBoolean(String username, String password) {
+//		
+//		boolean res = false;
+//		Utente u = uDAO.readUserUser(username);
+//		if(u != null && u.getPassword().equals(password)){
+//			res=true;
+//		}
+//		return res;
+//
+//	}
+//	
+//	public void setBeanUtente(Utente u){
+//		uDAO.fillDatiUtente(u);
+//	}
+//	
+//	public void setBeanAdmin(Admin a){
+//		aDAO.fillDatiAdmin(a);
+//	}
+//	
+//	public void setBeanCliente(Cliente c){
+//		cDAO.fillDatiCliente(c);
+//	}
+//	
+//	public void setBeanDipendente(Dipendente d){
+//		dDAO.fillDatiDipendente(d);
+//	}
+//	
+//	public boolean readClienteId(long id){
+//		return cDAO.readUser(id) != null;		
+//	}
+//	
+//	public boolean readDipendenteId(long id){
+//		return dDAO.readUser(id) != null;		
+//	}
+//	
+//	public Utente readUserUserPsw(String username, String password){
+//		return uDAO.readUserUserPsw(username, password);
+//	}
+//	
+//	public Utente readUserNomeCog(String nome, String cognome){
+//		return uDAO.readUserNomeCog(nome, cognome);
+//	}
+//
+//	
+//	public Utente readUserUser(String username){
+//		return uDAO.readUserUser(username);
+//	}
+//	
+//	public void createCliente(Cliente c){
+//		cDAO.createUser(c);
+//		Rubrica r = s.registraRubrica(c.getNome(), c.getCognome());
+//		c.setRubrica(r);
+//		cDAO.updateUser(c);
+//	}
+//	
+//	public void createDip(Dipendente d){
+//		dDAO.createUser(d);
+//		Rubrica r = s.registraRubrica(d.getNome(), d.getCognome());
+//		d.setRubrica(r);
+//		dDAO.updateUser(d);
+//	}
 
 	public List<Cliente> getListClienti(){
 		return cDAO.getAll();
@@ -91,21 +91,6 @@ public class Gestione {
 	
 	public List<Voce> getAllVoci(Rubrica r){
 		return s.getAll(r);
-	}
-	
-	public String codificaPsw(String psw){	
-		try {
-			MessageDigest md = MessageDigest.getInstance("MD5");
-			byte[] array = md.digest(psw.getBytes());
-			StringBuffer sb = new StringBuffer();
-			for (int i = 0; i < array.length; ++i) {
-				sb.append(Integer.toHexString((array[i] & 0xFF) | 0x100)
-						.substring(1, 3));
-			}
-			return sb.toString();
-		} catch (java.security.NoSuchAlgorithmException e) {
-		}
-		return null;
 	}
 	
 	public boolean readVoce(Rubrica r, Voce v){
@@ -134,21 +119,6 @@ public class Gestione {
 		return u.getRuolo();
 	}
 	
-	public boolean eliminaUtenteById(long id) {
-		
-		Utente u = uDAO.readUser(id);
-		
-		if(u.getRuolo()==Ruolo.ADMIN){
-			return false;
-		}else {
-			Rubrica r=rDAO.readRubrica(u.getNome(), u.getCognome());
-			if(r!=null) {
-			rDAO.deleteRubrica(r);
-			}
-			return uDAO.deleteUser(u);
-		}
-	}
-	
 	public void createBusta(BustaPaga b){
 		bDAO.createBusta(b);
 	}
@@ -171,5 +141,13 @@ public class Gestione {
 	
 	public void updateDipendente(Dipendente d){
 		dDAO.updateUser(d);
+	}
+
+	public void deleteCliente(Cliente c) {
+		cDAO.deleteUser(c);	
+	}
+
+	public void deleteDipendente(Dipendente d) {
+		dDAO.deleteUser(d);		
 	}
 }

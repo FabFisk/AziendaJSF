@@ -66,16 +66,24 @@ public class DTController implements Serializable {
 	
 	public String updateUtente(Utente u){
 		if(u.getRuolo()==Ruolo.CLIENTE){
-			g.updateCliente((Cliente) u);		
+			g.updateCliente((Cliente) u);
+			return "ElencoClienti?faces-redirect=true";	
 		}else if(u.getRuolo()==Ruolo.DIPENDENTE){
 			g.updateDipendente((Dipendente) u);
+			return "ElencoDipendenti?faces-redirect=true";	
 		}
-		return "table?faces-redirect=true";	
+		return null;
 	}
 	
 	public String deleteUtente(Utente u){
-		g.eliminaUtenteById(u.getId_utente());		
-		return "table?faces-redirect=true";	
+		if(u.getRuolo()==Ruolo.CLIENTE){
+			g.deleteCliente((Cliente) u);
+			return "ElencoClienti?faces-redirect=true";	
+		}else if(u.getRuolo()==Ruolo.DIPENDENTE){
+			g.deleteDipendente((Dipendente) u);
+			return "ElencoDipendenti?faces-redirect=true";	
+		}
+		return null;
 	}
 	
  	public void onRowEdit(RowEditEvent event) {
