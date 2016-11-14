@@ -1,5 +1,10 @@
 package it.alfasoft.fabrizio.mainTest;
 
+import java.util.List;
+
+import it.alfasoft.fabrizio.bean.Cliente;
+import it.alfasoft.fabrizio.dao.ClienteDAO;
+
 
 public class Test {
 
@@ -15,6 +20,7 @@ public class Test {
 //		a.setLivello('A');
 //		AdminDAO aDAO = new AdminDAO();
 //		aDAO.createUser(a);
+		
 	}
 
 }

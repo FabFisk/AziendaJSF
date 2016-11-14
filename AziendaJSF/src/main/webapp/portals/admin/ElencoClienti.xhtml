@@ -12,15 +12,15 @@
 		<h:form id="form">
 			<p:growl id="msgs" showDetail="true" />
 
-			<p:dataTable id="clienti" var="c" value="#{DTController.clienti}"
+			<p:dataTable id="clienti" var="c" value="#{DTC.clienti}"
 				editable="true" style="margin-bottom:20px">
 				<f:facet name="header">
            Row Editing
        </f:facet>
 
-				<p:ajax event="rowEdit" listener="#{DTController.onRowEdit}"
+				<p:ajax event="rowEdit" listener="#{DTC.onRowEdit}"
 					update=":form:msgs" />
-				<p:ajax event="rowEditCancel" listener="#{DTController.onRowCancel}"
+				<p:ajax event="rowEditCancel" listener="#{DTC.onRowCancel}"
 					update=":form:msgs" />
 
 				<p:column headerText="Nome">
@@ -65,7 +65,7 @@
 					<p:rowEditor />
 				</p:column>
 				<p:column style="width:32px">
-					<p:commandLink action="#{DTController.deleteUtente(d)}">
+					<p:commandLink action="#{DTC.deleteUtente(d)}">
 						<i class="ui-icon ui-icon-trash"></i>
 					</p:commandLink>
 				</p:column>

@@ -15,7 +15,7 @@ import javax.faces.context.FacesContext;
 
 import org.primefaces.event.RowEditEvent;
  
-@ManagedBean
+@ManagedBean(name="DTC")
 @ViewScoped
 public class DTController implements Serializable {
      
@@ -32,6 +32,8 @@ public class DTController implements Serializable {
 		g = new Gestione();
 		this.clienti = g.getListClienti();
 		this.dipendenti = g.getListDipendenti();
+		System.out.println(dipendenti.get(0).getCognome());
+		System.out.println(clienti.get(0).getCognome());
 	}
 
 	public Gestione getG() {
