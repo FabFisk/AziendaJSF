@@ -24,22 +24,22 @@ public class DTController implements Serializable {
 	 */
 	private static final long serialVersionUID = 1L;
 	
-	private GestioneUtenti g;
+	private GestioneUtenti gU;
 	private List<Cliente> clienti;
 	private List<Dipendente> dipendenti;
 	
 	public DTController(){
-		g = new GestioneUtenti();
-		this.clienti = g.getListClienti();
-		this.dipendenti = g.getListDipendenti();
+		gU = new GestioneUtenti();
+		this.clienti = gU.getListClienti();
+		this.dipendenti = gU.getListDipendenti();
 	}
 
 	public GestioneUtenti getG() {
-		return g;
+		return gU;
 	}
 
 	public void setG(GestioneUtenti g) {
-		this.g = g;
+		this.gU = g;
 	}
 
 	public List<Cliente> getClienti() {
@@ -64,10 +64,10 @@ public class DTController implements Serializable {
 	
 	public String updateUtente(Utente u){
 		if(u.getRuolo()==Ruolo.CLIENTE){
-			g.updateCliente((Cliente) u);
+			gU.updateCliente((Cliente) u);
 			return "ElencoClienti?faces-redirect=true";	
 		}else if(u.getRuolo()==Ruolo.DIPENDENTE){
-			g.updateDipendente((Dipendente) u);
+			gU.updateDipendente((Dipendente) u);
 			return "ElencoDipendenti?faces-redirect=true";	
 		}
 		return null;
@@ -75,10 +75,10 @@ public class DTController implements Serializable {
 	
 	public String deleteUtente(Utente u){
 		if(u.getRuolo()==Ruolo.CLIENTE){
-			g.deleteCliente((Cliente) u);
+			gU.deleteCliente((Cliente) u);
 			return "ElencoClienti?faces-redirect=true";	
 		}else if(u.getRuolo()==Ruolo.DIPENDENTE){
-			g.deleteDipendente((Dipendente) u);
+			gU.deleteDipendente((Dipendente) u);
 			return "ElencoDipendenti?faces-redirect=true";	
 		}
 		return null;
