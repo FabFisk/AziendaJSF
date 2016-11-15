@@ -1,0 +1,50 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.org/ui">
+
+<ui:composition template="../../layout/layout.xhtml">
+	<ui:define name="menu">
+		<ui:include src="Menu.xhtml" />
+	</ui:define>
+	<ui:define name="content">
+		<h:form>
+			<p:panel header="Validate">
+				<p:messages autoUpdate="true" />
+
+				<h:panelGrid id="grid" columns="2" cellpadding="5">
+					<p:outputLabel for="dipendente" value="Dipendente: " style="font-weight:bold"/>
+					<p:selectOneMenu id="dipendente" value="#{bControl.scelta}"
+						style="width:150px">
+						<f:selectItem itemLabel="Seleziona Dipendente" itemValue=""
+							noSelectionOption="true" />
+						<f:selectItems value="#{bControl.dipendenti}" />
+					</p:selectOneMenu>
+
+					<h:outputLabel for="anno" value="Emissione:" style="font-weight:bold" />
+					<p:calendar id="anno" value="#{b.dataEmissione}" />
+
+					<h:outputLabel for="totale" value="Totale (€):"
+						style="font-weight:bold" />
+					<p:inputText id="totale" value="#{b.totale}"
+						label="Totale">
+						<f:convertNumber type="currency" currencySymbol="€" locale="it_IT" />
+					</p:inputText>
+					<p:message for="totale" />
+<!-- 					<h:outputText value="#{b.totale}"> -->
+<!-- 						<f:convertNumber type="currency" currencySymbol="€" locale="it_IT" /> -->
+<!-- 					</h:outputText> -->
+
+				</h:panelGrid>
+				<p:commandButton value="Registra!" action="#{bControl.createBusta(b)}" icon="ui-icon-check"
+					validateClient="true" style="margin-right:10px" />
+			</p:panel>
+		</h:form>
+
+	</ui:define>
+</ui:composition>
+</html>

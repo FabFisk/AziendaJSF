@@ -1,5 +1,6 @@
 package it.alfasoft.fabrizio.controller;
  
+import it.alfasoft.fabrizio.bean.BustaPaga;
 import it.alfasoft.fabrizio.bean.Cliente;
 import it.alfasoft.fabrizio.bean.Dipendente;
 import it.alfasoft.fabrizio.bean.Utente;
@@ -8,6 +9,7 @@ import it.alfasoft.fabrizio.utility.Ruolo;
 
 import java.io.Serializable;
 import java.util.List;
+
 import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ViewScoped;
@@ -27,11 +29,13 @@ public class DTController implements Serializable {
 	private GestioneUtenti gU;
 	private List<Cliente> clienti;
 	private List<Dipendente> dipendenti;
+	private List<BustaPaga> bustePaga;
 	
 	public DTController(){
 		gU = new GestioneUtenti();
 		this.clienti = gU.getListClienti();
 		this.dipendenti = gU.getListDipendenti();
+		this.bustePaga = gU.getListBuste();
 	}
 
 	public GestioneUtenti getG() {
@@ -56,6 +60,14 @@ public class DTController implements Serializable {
 
 	public void setDipendenti(List<Dipendente> dipendenti) {
 		this.dipendenti = dipendenti;
+	}
+	
+	public List<BustaPaga> getBustePaga() {
+		return bustePaga;
+	}
+
+	public void setBustePaga(List<BustaPaga> bustePaga) {
+		this.bustePaga = bustePaga;
 	}
 
 	public static long getSerialversionuid() {
@@ -84,13 +96,37 @@ public class DTController implements Serializable {
 		return null;
 	}
 	
- 	public void onRowEdit(RowEditEvent event) {
+ 	public void onRowEditUser(RowEditEvent event) {
  		this.updateUtente((Utente) event.getObject());
-        
+        FacesMessage msg = new FacesMessage("Modificato", ((Utente) event.getObject()).getNome()+" "+((Utente) event.getObject()).getCognome());
+        FacesContext.getCurrentInstance().addMessage(null, msg);
     }
      
-    public void onRowCancel(RowEditEvent event) {
+    public void onRowCancelUser(RowEditEvent event) {
         FacesMessage msg = new FacesMessage("Modifica Annullata", ((Utente) event.getObject()).getNome()+" "+((Utente) event.getObject()).getCognome());
         FacesContext.getCurrentInstance().addMessage(null, msg);
     }
+    
+	public String updateBusta(BustaPaga b){
+		gU.updateBusta(b);
+		return "ElencoBuste?faces-redirect=true";	
+	}
+	
+	public String deleteBusta(BustaPaga b){
+		gU.deleteBusta(b);		
+		return "ElencoBuste?faces-redirect=true";
+	}
+	
+ 	public void onRowEditBusta(RowEditEvent event) {
+ 		this.updateBusta((BustaPaga) event.getObject());
+        FacesMessage msg = new FacesMessage("Modificato", ((BustaPaga) event.getObject()).getDipendente().getCognome());
+        FacesContext.getCurrentInstance().addMessage(null, msg);
+    }
+     
+    public void onRowCancelBusta(RowEditEvent event) {
+        FacesMessage msg = new FacesMessage("Modifica Annullata", ((BustaPaga)  event.getObject()).getDipendente().getCognome());
+        FacesContext.getCurrentInstance().addMessage(null, msg);
+    }
+
+
 }

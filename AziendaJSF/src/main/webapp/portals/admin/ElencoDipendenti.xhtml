@@ -21,9 +21,9 @@
           Elenco Dipendenti
        			</f:facet>
 
-				<p:ajax event="rowEdit" listener="#{DTC.onRowEdit}"
+				<p:ajax event="rowEdit" listener="#{DTC.onRowEditUser}"
 					update=":form:msgs" />
-				<p:ajax event="rowEditCancel" listener="#{DTC.onRowCancel}"
+				<p:ajax event="rowEditCancel" listener="#{DTC.onRowCancelUser}"
 					update=":form:msgs" />
 
 				<p:column headerText="Nome">

@@ -1,5 +1,6 @@
 package it.alfasoft.fabrizio.service;
 
+import java.io.Serializable;
 import java.util.List;
 
 import it.alfasoft.fabrizio.bean.*;
@@ -7,8 +8,12 @@ import it.alfasoft.fabrizio.dao.*;
 import it.alfasoft.fabrizio.rubrica.*;
 import it.alfasoft.fabrizio.utility.Ruolo;
 
-public class GestioneUtenti {
+public class GestioneUtenti implements Serializable{
 	
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	UtenteDAO uDAO = new UtenteDAO();
 	AdminDAO aDAO = new AdminDAO();
 	ClienteDAO cDAO = new ClienteDAO();
@@ -84,6 +89,25 @@ public class GestioneUtenti {
 	public Admin readAdmin(long id) {
 		return aDAO.readUser(id);
 	}
+
+	public void creteBusta(BustaPaga b) {
+		bDAO.createBusta(b);
+	}
+	
+	public List<BustaPaga> getListBuste() {
+		return bDAO.getAll();
+	}
+
+	public void updateBusta(BustaPaga b) {
+		bDAO.updateBusta(b);
+		
+	}
+
+	public void deleteBusta(BustaPaga b) {
+		bDAO.deleteBusta(b);		
+	}
+	
+	
 
 	
 //	public boolean existUserBoolean(String username, String password) {

@@ -1,13 +1,19 @@
 package it.alfasoft.fabrizio.bean;
 
 import java.io.Serializable;
+import java.util.Date;
 
-import javax.persistence.*;
+import javax.faces.bean.ManagedBean;
+import javax.persistence.Entity;
+import javax.persistence.FetchType;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.ManyToOne;
 
-import it.alfasoft.fabrizio.utility.Validate;
-
+@ManagedBean(name="b")
 @Entity
-public class BustaPaga implements Serializable, Validate {
+public class BustaPaga implements Serializable {
 
 	/**
 	 * 
@@ -17,21 +23,16 @@ public class BustaPaga implements Serializable, Validate {
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private long id_busta;
-	private String mese;
-	private int anno;
+	private Date dataEmissione;
 	@ManyToOne(fetch = FetchType.EAGER)
 	private Dipendente dipendente;
 	private double totale;
 	
 	public BustaPaga() {
-		this.mese = "";
-		this.anno = 0;
-		this.totale = 0.0;
 	}
 	
-	public BustaPaga(String mese, int anno, Dipendente d, double tot){
-		this.mese = mese;
-		this.anno = anno;
+	public BustaPaga(Date emissione, Dipendente d, double tot){
+		this.dataEmissione = emissione;
 		this.dipendente = d;
 		this.totale = tot;
 	}
@@ -42,22 +43,6 @@ public class BustaPaga implements Serializable, Validate {
 
 	public void setId_busta(long id_busta) {
 		this.id_busta = id_busta;
-	}
-
-	public String getMese() {
-		return mese;
-	}
-
-	public void setMese(String mese) {
-		this.mese = mese;
-	}
-
-	public int getAnno() {
-		return anno;
-	}
-
-	public void setAnno(int anno) {
-		this.anno = anno;
 	}
 
 	public Dipendente getDipendente() {
@@ -76,17 +61,15 @@ public class BustaPaga implements Serializable, Validate {
 		this.totale = totale;
 	}
 
-	public boolean isValid() {
-		boolean token = false;
-		if(!this.mese.isEmpty() && this.anno!=0
-				&& this.totale!=0){
-			token = true;
-		}
-		return token;
+	public Date getDataEmissione() {
+		return dataEmissione;
 	}
-	
-	
-	
-	
 
+	public void setDataEmissione(Date dataEmissione) {
+		this.dataEmissione = dataEmissione;
+	}
+
+	public static long getSerialversionuid() {
+		return serialVersionUID;
+	}
 }

@@ -15,69 +15,69 @@
 		<h:form id="form">
 			<p:growl id="msgs" showDetail="true" />
 
-			<p:dataTable id="clienti" var="c" value="#{DTC.clienti}"
+			<p:dataTable id="dipendenti" var="b" value="#{DTC.bustePaga}"
 				editable="true" style="margin-bottom:20px">
 				<f:facet name="header">
-           Elenco Clienti
+          Elenco Buste Paga
        			</f:facet>
 
-				<p:ajax event="rowEdit" listener="#{DTC.onRowEditUser}"
+				<p:ajax event="rowEdit" listener="#{DTC.onRowEditBusta}"
 					update=":form:msgs" />
-				<p:ajax event="rowEditCancel" listener="#{DTC.onRowCancelUser}"
+				<p:ajax event="rowEditCancel" listener="#{DTC.onRowCancelBusta}"
 					update=":form:msgs" />
 
-				<p:column headerText="Nome">
+				<p:column headerText="Dipendente">
 					<p:cellEditor>
 						<f:facet name="output">
-							<h:outputText value="#{c.nome}" />
+							<h:outputText value="#{b.dipendente.cognome} #{b.dipendente.nome}" />
 						</f:facet>
 						<f:facet name="input">
-							<p:inputText value="#{c.nome}" style="width:100%"
-								label="Nome" />
-						</f:facet>
-					</p:cellEditor>
-				</p:column>
-				
-				<p:column headerText="Cognome">
-					<p:cellEditor>
-						<f:facet name="output">
-							<h:outputText value="#{c.cognome}" />
-						</f:facet>
-						<f:facet name="input">
-							<p:inputText value="#{c.cognome}" style="width:100%"
-								label="Cognome" />
+							<h:selectOneMenu value="#{bControl.scelta}" style="width:100%">
+								<f:selectItems value="#{bControl.dipendenti}" var="dip"
+									itemLabel="#{dip}" itemValue="#{dip}" />
+							</h:selectOneMenu>
 						</f:facet>
 					</p:cellEditor>
 				</p:column>
 								
-				<p:column headerText="Username">
+				<p:column headerText="Emissione">
 					<p:cellEditor>
-						<f:facet name="output">
-							<h:outputText value="#{c.username}" />
+						<f:facet name="output">		
+							<h:outputText value="#{b.dataEmissione}">					
+								<f:convertDateTime pattern="d/M/yyyy"/>
+							</h:outputText>
 						</f:facet>
-						<f:facet name="input">
-							<p:inputText value="#{c.username}" style="width:100%"
-								label="Username" />
+						<f:facet name="input">							
+							<p:inputText value="#{b.dataEmissione}" style="width:100%"
+								label="Data">
+								<f:convertDateTime pattern="d/M/yyyy"/>
+							</p:inputText>
 						</f:facet>
 					</p:cellEditor>
 				</p:column>
-
 				
+				<p:column headerText="Totale">
+					<p:cellEditor>
+						<f:facet name="output">
+							<h:outputText value="€#{b.totale}" />
+						</f:facet>
+						<f:facet name="input">
+							<p:inputText value="#{b.totale}" style="width:100%"
+								label="Totale" />
+						</f:facet>
+					</p:cellEditor>
+				</p:column>				
 
 				<p:column style="width:32px">
 					<p:rowEditor />
 				</p:column>
 				<p:column style="width:32px">
-					<p:commandLink action="#{DTC.deleteUtente(c)}">
+					<p:commandLink action="#{DTC.deleteBusta(b)}">
 						<i class="ui-icon ui-icon-trash"></i>
 					</p:commandLink>
 				</p:column>
 			</p:dataTable>
-
 		</h:form>
-
-
-
 	</ui:define>
 </ui:composition>
 </html>
