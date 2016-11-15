@@ -1,0 +1,45 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.org/ui">
+
+<h:form>
+	<p:toolbar>
+		<f:facet name="left">
+			<span class="ui-separator">
+				<p:graphicImage library="img" name="rsz_alfasoftsito.png" />
+			</span>
+			<span class="ui-separator">
+				<span class="ui-icon ui-icon-grip-dotted-vertical" />
+			</span>
+			<p:commandButton type="button" value="Test" icon="ui-icon-document" />
+			<p:commandButton type="button" value="Test"	icon="ui-icon-folder-open" />
+			<span class="ui-separator"> 
+				<span class="ui-icon ui-icon-grip-dotted-vertical" />
+			</span>
+			<p:commandButton type="button" title="Test" icon="ui-icon-disk" />
+			<p:commandButton type="button" title="Test" icon="ui-icon-trash" />
+			<p:commandButton type="button" title="Test" icon="ui-icon-print" />
+		</f:facet>
+		<f:facet name="right">
+			<p:menuButton value="Options">
+				<p:menuitem>
+					<p:panelGrid columns="2">
+						<f:facet name="header">
+							<p:graphicImage library="img" name="rsz_alfasoftsito.png" />
+						</f:facet>
+						<h:outputText value="User:" />
+						<h:outputText value="#{admin.username}" />
+					</p:panelGrid>
+				</p:menuitem>
+				<p:menuitem value="Test" icon="fa fa-fw fa-home" />
+				<p:menuitem value="Test" icon="fa fa-fw fa-sign-out" />
+			</p:menuButton>
+		</f:facet>
+	</p:toolbar>
+</h:form>
+</html>

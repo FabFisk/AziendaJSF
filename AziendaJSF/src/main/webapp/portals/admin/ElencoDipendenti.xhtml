@@ -8,6 +8,9 @@
 	xmlns:p="http://primefaces.org/ui">
 
 <ui:composition template="../../layout/layout.xhtml">
+	<ui:define name="bar">
+		<ui:include src="Toolbar.xhtml" />
+	</ui:define>
 	<ui:define name="menu">
 		<ui:include src="Menu.xhtml"/>
 	</ui:define>
@@ -26,6 +29,18 @@
 				<p:ajax event="rowEditCancel" listener="#{DTC.onRowCancelUser}"
 					update=":form:msgs" />
 
+				<p:column headerText="Cognome">
+					<p:cellEditor>
+						<f:facet name="output">
+							<h:outputText value="#{d.cognome}" />
+						</f:facet>
+						<f:facet name="input">
+							<p:inputText value="#{d.cognome}" style="width:100%"
+								label="Cognome" />
+						</f:facet>
+					</p:cellEditor>
+				</p:column>
+
 				<p:column headerText="Nome">
 					<p:cellEditor>
 						<f:facet name="output">
@@ -38,18 +53,6 @@
 					</p:cellEditor>
 				</p:column>
 				
-				<p:column headerText="Cognome">
-					<p:cellEditor>
-						<f:facet name="output">
-							<h:outputText value="#{d.cognome}" />
-						</f:facet>
-						<f:facet name="input">
-							<p:inputText value="#{d.cognome}" style="width:100%"
-								label="Cognome" />
-						</f:facet>
-					</p:cellEditor>
-				</p:column>
-								
 				<p:column headerText="Username">
 					<p:cellEditor>
 						<f:facet name="output">

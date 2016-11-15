@@ -10,14 +10,11 @@
 <h:form>
     <p:menu toggleable="true">
    		<p:menuitem value="Home Page" outcome="Home" icon="fa fa-fw fa-home"/>
-<!--         <p:submenu label="Gestione Clienti"> -->
-<!--         	<p:menuitem value="Nuovo Cliente" icon="fa fa-fw fa-user-plus"/> -->
-<!-- 			<p:menuitem value="Clienti" outcome="ElencoClienti" icon="fa fa-fw fa-reorder"/> -->
-<!--         </p:submenu> -->
-<!--         <p:submenu label="Gestione Dipendenti"> -->
-<!--         	<p:menuitem value="Nuovo Dipendente" icon="fa fa-fw fa-user-plus"/> -->
-<!--             <p:menuitem value="Dipendenti" outcome="ElencoDipendenti" icon="fa fa-fw fa-reorder"/> -->
-<!--         </p:submenu> -->
+        <p:submenu label="Rubrica" icon="fa fa-fw fa-phone">
+        	<p:menuitem value="Aggiungi Contatto" icon="fa fa-fw fa-user-plus"/>
+			<p:menuitem value="Elenco Contatti" icon="fa fa-fw fa-reorder"/>
+			<p:menuitem value="Trova Contatto" icon="fa fa-fw fa-search"/>
+        </p:submenu>
         <p:submenu label="Profilo">
         	<p:menuitem value="Modifica Profilo" outcome="AggiornaProfilo" icon="fa fa-fw fa-user"/>
         	<p:menuitem value="Logout" icon="fa fa-fw fa-sign-out"/>
