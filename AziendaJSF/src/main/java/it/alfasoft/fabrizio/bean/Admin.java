@@ -1,10 +1,13 @@
 package it.alfasoft.fabrizio.bean;
 
 import java.io.Serializable;
+
+import javax.faces.bean.ManagedBean;
 import javax.persistence.*;
 
 @Entity
 @PrimaryKeyJoinColumn(name="id_utente")
+@ManagedBean(name="a")
 public class Admin extends Utente implements Serializable{
 
 	/**

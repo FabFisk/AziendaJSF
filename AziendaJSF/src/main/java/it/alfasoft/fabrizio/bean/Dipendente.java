@@ -5,8 +5,11 @@ import java.util.HashSet;
 import java.util.Set;
 
 import javax.faces.bean.ManagedBean;
-import javax.faces.bean.RequestScoped;
-import javax.persistence.*;
+import javax.persistence.CascadeType;
+import javax.persistence.Entity;
+import javax.persistence.FetchType;
+import javax.persistence.OneToMany;
+import javax.persistence.PrimaryKeyJoinColumn;
 
 import org.hibernate.annotations.NotFound;
 import org.hibernate.annotations.NotFoundAction;
@@ -14,7 +17,6 @@ import org.hibernate.annotations.NotFoundAction;
 @Entity
 @PrimaryKeyJoinColumn(name="id_utente")
 @ManagedBean(name="d")
-@RequestScoped
 public class Dipendente extends Utente implements Serializable {
 
 	/**

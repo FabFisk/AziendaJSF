@@ -2,6 +2,7 @@ package it.alfasoft.fabrizio.rubrica;
 
 import java.io.Serializable;
 
+import javax.faces.bean.ManagedBean;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -11,6 +12,7 @@ import javax.persistence.ManyToOne;
 import it.alfasoft.fabrizio.utility.Validate;
 
 @Entity
+@ManagedBean(name="v")
 public class Voce implements Validate, Serializable {
 
 	/**
