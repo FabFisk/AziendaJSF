@@ -17,3 +17,9 @@
 .fa {
 	line-height: 1.4em;
 }
+
+.chatBar{
+	position: fixed;
+	bottom: 20px;
+	right: 20px;
+}

@@ -1,0 +1,44 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.org/ui">
+
+<h:form>
+	<p:toolbar styleClass="chatBar">
+		<f:facet name="left">
+
+		</f:facet>
+		<f:facet name="right">
+		<p:menuButton value="Options">
+									<p:repeat value="#{DTC.dipendenti}" var="d">
+						<h:panelGrid columns="1" style="width:100%"
+							columnClasses="detail">
+							<p:commandLink value="#{d.cognome} #{d.nome}">
+								
+							</p:commandLink>
+						</h:panelGrid>
+					</p:repeat>
+			</p:menuButton>
+			
+<!-- 			<p:commandButton id="imageBtn" value="Basic" type="button"> -->
+<!-- 				<p:overlayPanel id="imagePanel" for="imageBtn" hideEffect="fade" style="width:100%"> -->
+				
+<!-- 					<p:repeat value="#{DTC.dipendenti}" var="d"> -->
+<!-- 						<h:panelGrid columns="1" style="width:100%" -->
+<!-- 							columnClasses="detail"> -->
+<!-- 							<p:commandLink value="#{d.cognome} #{d.nome}"> -->
+								
+<!-- 							</p:commandLink> -->
+<!-- 						</h:panelGrid> -->
+<!-- 					</p:repeat> -->
+					
+<!-- 				</p:overlayPanel> -->
+<!-- 			</p:commandButton> -->
+		</f:facet>
+	</p:toolbar>
+</h:form>
+</html>

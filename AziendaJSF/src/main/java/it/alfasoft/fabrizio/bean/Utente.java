@@ -35,7 +35,8 @@ public class Utente implements Serializable, Validate {
 	@NotFound(action = NotFoundAction.IGNORE)
 	protected Rubrica rubrica;
 	
-	public Utente (){}
+	public Utente (){
+	}
 	public Utente(String nome, String cognome, String username, String password, Ruolo ruolo) {
 		this.nome = nome;
 		this.cognome = cognome;
@@ -87,7 +88,7 @@ public class Utente implements Serializable, Validate {
 	}
 	public static long getSerialversionuid() {
 		return serialVersionUID;
-	}
+	}	
 	
 	public boolean isValid() {
 		boolean token = false;
