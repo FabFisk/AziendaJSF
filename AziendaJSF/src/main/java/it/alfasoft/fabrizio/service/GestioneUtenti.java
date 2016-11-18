@@ -77,6 +77,10 @@ public class GestioneUtenti implements Serializable{
 	public List<Dipendente> getListDipendenti(){
 		return dDAO.getAll();
 	}
+	
+	public List<Dipendente> getOnline() {
+		return dDAO.getOnline();
+	}
 
 	public Cliente readCliente(long id) {
 		return cDAO.readUser(id);
@@ -106,6 +110,8 @@ public class GestioneUtenti implements Serializable{
 	public void deleteBusta(BustaPaga b) {
 		bDAO.deleteBusta(b);		
 	}
+
+
 	
 	
 

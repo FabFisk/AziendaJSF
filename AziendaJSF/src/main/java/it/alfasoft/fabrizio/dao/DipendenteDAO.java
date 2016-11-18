@@ -51,6 +51,26 @@ public class DipendenteDAO {
 			return dipendenti;
 		}
 		
+		@SuppressWarnings("unchecked")
+		public List<Dipendente> getOnline() {
+			List<Dipendente> dipendenti = new ArrayList<Dipendente>();
+			Session session = HibernateUtil.openSession();
+			Transaction tx = null;
+			try {
+				tx = session.getTransaction();
+				tx.begin();
+				Query query = session.createQuery("from Dipendente where online=:statusInserito");
+				query.setInteger("statusInserito", 1);
+				dipendenti = query.list();
+				tx.commit();
+			} catch (Exception ex) {
+				tx.rollback();
+			} finally {
+				session.close();
+			}
+			return dipendenti;
+		}
+		
 		public Dipendente readUser(long id_d){
 			Dipendente a = null;
 			Session session = HibernateUtil.openSession();

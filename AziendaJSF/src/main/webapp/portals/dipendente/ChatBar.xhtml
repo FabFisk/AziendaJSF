@@ -1,0 +1,33 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.org/ui">
+
+<h:form>
+	<p:toolbar styleClass="chatBar">
+		<f:facet id="chat" name="left">
+<!-- 			<p:commandButton id="chat1" value="Chat" type="button" -->
+<!-- 				icon="fa fa-fw fa-comment"/> -->
+<!-- 			<p:menu overlay="true" trigger="chat1" my="left bottom" at="left top" > -->
+<!-- 				<p:menuitem value="Tizio Caio" /> -->
+<!-- 				<p:menuitem value="Pippo" /> -->
+<!-- 				<p:menuitem value="Paolo" /> -->
+<!-- 				<p:menuitem value="Maria" /> -->
+<!-- 			</p:menu> -->
+		</f:facet>
+		<f:facet name="right">
+			<span class="ui-separator">
+				<span class="ui-icon ui-icon-grip-dotted-vertical" />
+			</span>
+			<p:commandButton id="online" value="Chat" type="button"
+				icon="fa fa-fw fa-comment" />
+			<p:menu overlay="true" trigger="online" model="#{onlineMenu.model}"
+				my="left bottom" at="left top" />
+		</f:facet>
+	</p:toolbar>
+</h:form>
+</html>

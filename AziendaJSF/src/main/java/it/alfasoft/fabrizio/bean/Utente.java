@@ -30,6 +30,7 @@ public class Utente implements Serializable, Validate {
 	protected String username = "";
 	protected String password = "";
 	protected Ruolo ruolo;
+	protected boolean loggato = false;
 	
 	@OneToOne(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
 	@NotFound(action = NotFoundAction.IGNORE)
@@ -89,7 +90,20 @@ public class Utente implements Serializable, Validate {
 	public static long getSerialversionuid() {
 		return serialVersionUID;
 	}	
+//	public int getOnline() {
+//		return online;
+//	}
+//	public void setOnline(int online) {
+//		this.online = online;
+//	}	
+//	public boolean isOnline() {
+//		return online;
+//	}
+//	public void setOnline(boolean online) {
+//		this.online = online;
+//	}
 	
+
 	public boolean isValid() {
 		boolean token = false;
 		if(!this.nome.isEmpty() && !this.cognome.isEmpty()

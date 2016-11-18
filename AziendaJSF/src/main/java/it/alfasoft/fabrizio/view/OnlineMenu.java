@@ -24,7 +24,7 @@ public class OnlineMenu {
         DefaultSubMenu firstSubmenu = new DefaultSubMenu("Utenti Online"); 
         DefaultMenuItem item;
         
-        for(Dipendente d : gU.getListDipendenti()){
+        for(Dipendente d : gU.getOnline()){
         	item = new DefaultMenuItem(d.getCognome()+" "+d.getNome());
         	item.setIcon("fa fa-fw fa-comments-o");
         	item.setOnclick("");
