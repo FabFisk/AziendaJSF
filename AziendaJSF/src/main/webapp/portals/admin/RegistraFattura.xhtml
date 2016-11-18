@@ -1,0 +1,62 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.org/ui">
+
+<ui:composition template="../../layout/layout.xhtml">
+	<ui:define name="bar">
+		<ui:include src="Toolbar.xhtml" />
+	</ui:define>
+	<ui:define name="menu">
+		<ui:include src="Menu.xhtml"/>
+	</ui:define>
+	<ui:define name="content">
+		<h:form>
+<!-- 			<p:panel header="Nuovo Cliente"> -->
+<!-- 				<p:messages autoUpdate="true" /> -->
+
+<!-- 				<h:panelGrid id="grid" columns="4" cellpadding="5"> -->
+<!-- 					<h:outputLabel for="nome" value="Nome:" style="font-weight:bold" /> -->
+<!-- 					<p:inputText id="nome" value="#{c.nome}" -->
+<!-- 						required="true" label="Nome" /> -->
+<!-- 					<p:message for="nome" /> -->
+<!-- 					<h:outputText value="#{c.nome}" /> -->
+					
+<!-- 					<h:outputLabel for="cognome" value="Cognome:" style="font-weight:bold" /> -->
+<!-- 					<p:inputText id="cognome" value="#{c.cognome}" -->
+<!-- 						required="true" label="Cognome" /> -->
+<!-- 					<p:message for="cognome" /> -->
+<!-- 					<h:outputText value="#{c.cognome}" /> -->
+					
+<!-- 					<h:outputLabel for="ragSociale" value="Ragione Sociale:" style="font-weight:bold" /> -->
+<!-- 					<p:inputText id="ragSociale" value="#{c.ragSociale}" -->
+<!-- 						required="true" label="Ragione Sociale" /> -->
+<!-- 					<p:message for="ragSociale" /> -->
+<!-- 					<h:outputText value="#{c.ragSociale}" /> -->
+
+<!-- 					<h:outputLabel for="username" value="Username:" style="font-weight:bold" /> -->
+<!-- 					<p:inputText id="username" value="#{c.username}" -->
+<!-- 						required="true" label="Username" /> -->
+<!-- 					<p:message for="username" /> -->
+<!-- 					<h:outputText value="#{c.username}" /> -->
+										
+<!-- 					<h:outputLabel for="password" value="Password:" style="font-weight:bold" /> -->
+<!-- 					<p:password id="password" value="#{c.password}" -->
+<!-- 						required="true" label="Password" /> -->
+<!-- 					<p:message for="password" /> -->
+<!-- 					<h:outputText value="#{c.password}" /> -->
+					
+<!-- 				</h:panelGrid> -->
+
+<!-- 				<p:commandButton action="#{cControl.create(c)}" value="Registra" update="grid" icon="ui-icon-check" -->
+<!-- 					validateClient="true" style="margin-right:10px" /> -->
+<!-- 			</p:panel> -->
+		</h:form>
+		<ui:include src="ChatBar.xhtml" />
+	</ui:define>
+</ui:composition>
+</html>

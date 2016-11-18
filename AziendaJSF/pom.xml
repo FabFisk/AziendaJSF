@@ -48,7 +48,16 @@
 			<artifactId>oracle-driver-ojdbc6</artifactId>
 			<version>12.1.0.1</version>
 		</dependency>
-		<!-- https://mvnrepository.com/artifact/javax.inject/javax.inject -->
+		<dependency>
+			<groupId>org.glassfish.jersey.bundles</groupId>
+			<artifactId>jaxrs-ri</artifactId>
+			<version>2.16</version>
+		</dependency>
+		<dependency>
+			<groupId>org.glassfish.jersey.media</groupId>
+			<artifactId>jersey-media-moxy</artifactId>
+			<version>2.16</version>
+		</dependency>
 	</dependencies>
 
 	<build>
