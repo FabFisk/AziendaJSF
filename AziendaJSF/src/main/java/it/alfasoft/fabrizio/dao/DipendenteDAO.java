@@ -59,8 +59,8 @@ public class DipendenteDAO {
 			try {
 				tx = session.getTransaction();
 				tx.begin();
-				Query query = session.createQuery("from Dipendente where online=:statusInserito");
-				query.setInteger("statusInserito", 1);
+				Query query = session.createQuery("from Dipendente where loggato=:statusInserito");
+				query.setBoolean("statusInserito", true);
 				dipendenti = query.list();
 				tx.commit();
 			} catch (Exception ex) {
