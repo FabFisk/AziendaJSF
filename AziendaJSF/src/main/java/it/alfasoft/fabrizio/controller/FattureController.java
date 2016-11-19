@@ -71,8 +71,9 @@ public class FattureController {
 	}
 	
 	public List<Fattura> getFattureFiltrate(FiltroFattura ff){
-//		Response risp;
-//		this.setListaFatture(risp.readEntity(new GenericType<List<Fattura>>(){}));
+		Response risp;
+		risp = invFatt.getFattureFiltrate(ff).invoke();
+		this.setListaFatture(risp.readEntity(new GenericType<List<Fattura>>(){}));
 		return listaFatture;
 	}
 

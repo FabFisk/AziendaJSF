@@ -3,12 +3,13 @@ package it.alfasoft.fabrizio.bean;
 import java.util.Date;
 
 import javax.faces.bean.ManagedBean;
+import javax.ws.rs.QueryParam;
 
 @ManagedBean(name="ff")
 public class FiltroFattura {
 	
-	private Date inizio;
-	private Date fine;
+	private @QueryParam("inizio")Date inizio;
+	private @QueryParam("fine")Date fine;
 	
 	public FiltroFattura(){}
 
