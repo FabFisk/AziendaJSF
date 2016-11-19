@@ -12,11 +12,100 @@
 		<ui:include src="Toolbar.xhtml" />
 	</ui:define>
 	<ui:define name="menu">
-		<ui:include src="Menu.xhtml"/>
+		<ui:include src="Menu.xhtml" />
 	</ui:define>
 	<ui:define name="content">
+		<h:form>
+			<h:panelGrid id="searchCode" cellpadding="5" columns="2"
+				style="margin-bottom:10px">
+				
+				<h:outputText />
+				<h:outputText value="Cerca tramite codice" style="font-weight:bold" />
+				
+				<h:outputLabel value="Codice: " style="font-weight:bold" />
+				<p:inputText id="code1" value="#{codice}">
+					<p:ajax event="keyup" update="risCode"
+						listener="#{FCon.getFattura(codice)}" />
+				</p:inputText>				
+			</h:panelGrid>
 
+			<p:dataTable id="risCode" var="f" value="#{FCon.f}"
+				editable="true" style="margin-bottom:20px">
+				<f:facet name="header">
+					<h:outputText value="Fattura #{codice}" />
+       			</f:facet>
 
+				<p:column headerText="Codice">
+						<f:facet name="output">
+							<h:outputText value="#{f.codice}" />
+						</f:facet>
+				</p:column>
+								
+				<p:column headerText="Emissione">
+						<f:facet name="output">		
+							<h:outputText value="#{f.emissione}">					
+								<f:convertDateTime pattern="d/M/yyyy"/>
+							</h:outputText>
+						</f:facet>
+				</p:column>
+				
+				<p:column headerText="Totale">
+						<f:facet name="output">
+							<h:outputText value="€#{b.totale}" />
+						</f:facet>
+				</p:column>				
+
+			</p:dataTable>
+
+			
+			<h:panelGrid id="searchDate" cellpadding="5" columns="2"
+				style="margin-bottom:10px">
+
+				<h:outputText />
+				<h:outputText value="Cerca in un periodo" style="font-weight:bold" />
+				
+				<h:outputLabel for="inizio" value="Dal :" style="font-weight:bold" />
+				<p:calendar id="inizio" required="true" value="#{ff.inizio}"/>
+				
+				<h:outputLabel for="fine" value="Al :" style="font-weight:bold" />
+				<p:calendar id="fine" required="true" value="#{ff.fine}"/>
+
+				<p:commandButton value="Cerca" id="btnCode"
+					process="@all" update="risDate"
+					actionListener="#{Fcon.getFattureFiltrate(ff)}" />
+			</h:panelGrid>
+			
+			<p:dataTable id="risDate" var="f" value="#{FCon.listaFatture}"
+				editable="true" style="margin-bottom:20px">
+				<f:facet name="header">
+					<h:outputText value="Fatture #{ff.inizio} #{ff.fine}">					
+								<f:convertDateTime pattern="d/M/yyyy"/>
+					</h:outputText>
+       			</f:facet>
+
+				<p:column headerText="Codice">
+						<f:facet name="output">
+							<h:outputText value="#{f.codice}" />
+						</f:facet>
+				</p:column>
+								
+				<p:column headerText="Emissione">
+						<f:facet name="output">		
+							<h:outputText value="#{f.emissione}">					
+								<f:convertDateTime pattern="d/M/yyyy"/>
+							</h:outputText>
+						</f:facet>
+				</p:column>
+				
+				<p:column headerText="Totale">
+						<f:facet name="output">
+							<h:outputText value="€#{b.totale}" />
+						</f:facet>
+				</p:column>				
+
+			</p:dataTable>
+		</h:form>
+		
 		<ui:include src="ChatBar.xhtml" />
 	</ui:define>
 </ui:composition>

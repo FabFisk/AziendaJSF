@@ -3,6 +3,7 @@ package it.alfasoft.fabrizio.controller;
 import java.util.List;
 
 import it.alfasoft.fabrizio.bean.Fattura;
+import it.alfasoft.fabrizio.bean.FiltroFattura;
 import it.alfasoft.fabrizio.client.InvocazioneFattura;
 
 import javax.faces.bean.ManagedBean;
@@ -46,8 +47,13 @@ public class FattureController {
 		this.listaFatture = listaFatture;
 	}
 	
-	public void addFattura(Fattura f){
-		invFatt.addFattura(f).invoke();
+	public String addFattura(Fattura f){
+		String risp = null;
+		Response status = invFatt.addFattura(f).invoke();
+		if(status.getStatus()==201){
+			risp = "RegistraFattura?faces-redirect=true";
+		}
+		return risp;
 	}
 	
 	public Fattura getFattura(String code){
@@ -64,8 +70,9 @@ public class FattureController {
 		return listaFatture;
 	}
 	
-	public List<Fattura> getFattureFiltrate(){
-		
+	public List<Fattura> getFattureFiltrate(FiltroFattura ff){
+//		Response risp;
+//		this.setListaFatture(risp.readEntity(new GenericType<List<Fattura>>(){}));
 		return listaFatture;
 	}
 

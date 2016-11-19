@@ -15,68 +15,36 @@
 		<ui:include src="Menu.xhtml"/>
 	</ui:define>
 	<ui:define name="content">
-<!-- 		<h:form id="form"> -->
-<!-- 			<p:growl id="msgs" showDetail="true" /> -->
+		<h:form id="form">
 
-<!-- 			<p:dataTable id="clienti" var="c" value="#{DTC.clienti}" -->
-<!-- 				editable="true" style="margin-bottom:20px"> -->
-<!-- 				<f:facet name="header"> -->
-<!--            Elenco Clienti -->
-<!--        			</f:facet> -->
+			<p:dataTable id="fatture" var="f" value="#{FCon.getAllFatture()}"
+				editable="true" style="margin-bottom:20px">
+				<f:facet name="header">
+          Elenco Fatture
+       			</f:facet>
 
-<!-- 				<p:ajax event="rowEdit" listener="#{DTC.onRowEditUser}" -->
-<!-- 					update=":form:msgs" /> -->
-<!-- 				<p:ajax event="rowEditCancel" listener="#{DTC.onRowCancelUser}" -->
-<!-- 					update=":form:msgs" /> -->
-
-<!-- 				<p:column headerText="Nome"> -->
-<!-- 					<p:cellEditor> -->
-<!-- 						<f:facet name="output"> -->
-<!-- 							<h:outputText value="#{c.nome}" /> -->
-<!-- 						</f:facet> -->
-<!-- 						<f:facet name="input"> -->
-<!-- 							<p:inputText value="#{c.nome}" style="width:100%" -->
-<!-- 								label="Nome" /> -->
-<!-- 						</f:facet> -->
-<!-- 					</p:cellEditor> -->
-<!-- 				</p:column> -->
-				
-<!-- 				<p:column headerText="Cognome"> -->
-<!-- 					<p:cellEditor> -->
-<!-- 						<f:facet name="output"> -->
-<!-- 							<h:outputText value="#{c.cognome}" /> -->
-<!-- 						</f:facet> -->
-<!-- 						<f:facet name="input"> -->
-<!-- 							<p:inputText value="#{c.cognome}" style="width:100%" -->
-<!-- 								label="Cognome" /> -->
-<!-- 						</f:facet> -->
-<!-- 					</p:cellEditor> -->
-<!-- 				</p:column> -->
+				<p:column headerText="Codice">
+						<f:facet name="output">
+							<h:outputText value="#{f.codice}" />
+						</f:facet>
+				</p:column>
 								
-<!-- 				<p:column headerText="Username"> -->
-<!-- 					<p:cellEditor> -->
-<!-- 						<f:facet name="output"> -->
-<!-- 							<h:outputText value="#{c.username}" /> -->
-<!-- 						</f:facet> -->
-<!-- 						<f:facet name="input"> -->
-<!-- 							<p:inputText value="#{c.username}" style="width:100%" -->
-<!-- 								label="Username" /> -->
-<!-- 						</f:facet> -->
-<!-- 					</p:cellEditor> -->
-<!-- 				</p:column> -->
+				<p:column headerText="Emissione">
+						<f:facet name="output">		
+							<h:outputText value="#{f.emissione}">					
+								<f:convertDateTime pattern="d/M/yyyy"/>
+							</h:outputText>
+						</f:facet>
+				</p:column>
+				
+				<p:column headerText="Totale">
+						<f:facet name="output">
+							<h:outputText value="€#{b.totale}" />
+						</f:facet>
+				</p:column>				
 
-<!-- 				<p:column style="width:32px"> -->
-<!-- 					<p:rowEditor /> -->
-<!-- 				</p:column> -->
-<!-- 				<p:column style="width:32px"> -->
-<!-- 					<p:commandLink action="#{DTC.deleteUtente(c)}"> -->
-<!-- 						<i class="ui-icon ui-icon-trash"></i> -->
-<!-- 					</p:commandLink> -->
-<!-- 				</p:column> -->
-<!-- 			</p:dataTable> -->
-
-<!-- 		</h:form> -->
-
+			</p:dataTable>
+		</h:form>
 		<ui:include src="ChatBar.xhtml" />
 	</ui:define>
 </ui:composition>
