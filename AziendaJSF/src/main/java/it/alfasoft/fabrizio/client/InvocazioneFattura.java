@@ -26,7 +26,16 @@ public class InvocazioneFattura extends Invoczione {
 	}
 	
 	public Invocation getFattureFiltrate(FiltroFattura ff){
-		return fatTarget.queryParam("/filtro", ff).request().buildGet();
+//		System.out.println(ff.getInizio()+" "+ff.getFine());
+		return fatTarget.queryParam("/fatturaProva", ff).request().buildGet();
+	}
+	
+	public Invocation deleteFattura(String code){
+		return fatTarget.path(code).request().buildDelete();
+	}
+	
+	public Invocation updateFattura(Fattura f){
+		return fatTarget.request().buildPut(Entity.json(f));
 	}
 
 }

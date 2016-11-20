@@ -72,9 +72,10 @@ public class FattureController {
 	
 	public List<Fattura> getFattureFiltrate(FiltroFattura ff){
 		Response risp;
+//		System.out.println(ff.getInizio()+" "+ff.getFine());
 		risp = invFatt.getFattureFiltrate(ff).invoke();
 		this.setListaFatture(risp.readEntity(new GenericType<List<Fattura>>(){}));
-		System.out.println(listaFatture);
+//		System.out.println(listaFatture);
 		return listaFatture;
 	}
 
