@@ -7,6 +7,6 @@ import javax.ws.rs.client.WebTarget;
 public abstract class Invoczione {
 	
 	protected Client cliente = ClientBuilder.newClient();
-	protected WebTarget baseTarget = cliente.target("");
+	protected WebTarget baseTarget = cliente.target("http://localhost:8085/AziendaWebService/alfasoft");
 
 }

@@ -8,41 +8,82 @@
 	xmlns:p="http://primefaces.org/ui">
 
 <ui:composition template="../../layout/layout.xhtml">
+	<ui:define name="meta">
+		<f:metadata>
+			<f:event listener="#{FCon.getAllFatture()}" type="preRenderView" />
+		</f:metadata>
+	</ui:define>
 	<ui:define name="bar">
 		<ui:include src="Toolbar.xhtml" />
 	</ui:define>
 	<ui:define name="menu">
-		<ui:include src="Menu.xhtml"/>
+		<ui:include src="Menu.xhtml" />
 	</ui:define>
 	<ui:define name="content">
 		<h:form id="form">
+			<p:growl id="msgs" showDetail="true" />
 
 			<p:dataTable id="fatture" var="f" value="#{FCon.getAllFatture()}"
 				editable="true" style="margin-bottom:20px">
 				<f:facet name="header">
-          Elenco Fatture
+          Elenco Buste Paga
        			</f:facet>
 
+<!-- 				<p:ajax event="rowEdit" listener="#{DTC.onRowEditBusta}" -->
+<!-- 					update=":form:msgs" /> -->
+<!-- 				<p:ajax event="rowEditCancel" listener="#{DTC.onRowCancelBusta}" -->
+<!-- 					update=":form:msgs" /> -->
+
 				<p:column headerText="Codice">
+					<p:cellEditor>
 						<f:facet name="output">
-							<h:outputText value="#{f.codice}" />
+							<h:outputText
+								value="#{f.codice}" />
 						</f:facet>
+						<f:facet name="input">
+							<p:inputText value="#{f.codice}" style="width:100%"
+								label="Codice">
+							</p:inputText>
+						</f:facet>
+					</p:cellEditor>
 				</p:column>
-								
+
 				<p:column headerText="Emissione">
-						<f:facet name="output">		
-							<h:outputText value="#{f.emissione}">					
-								<f:convertDateTime pattern="d/M/yyyy"/>
+					<p:cellEditor>
+						<f:facet name="output">
+							<h:outputText value="#{f.emissione}">
+								<f:convertDateTime pattern="d/M/yyyy" />
 							</h:outputText>
 						</f:facet>
-				</p:column>
-				
-				<p:column headerText="Totale">
-						<f:facet name="output">
-							<h:outputText value="€#{b.totale}" />
+						<f:facet name="input">
+							<p:inputText value="#{f.emissione}" style="width:100%"
+								label="Data">
+								<f:convertDateTime pattern="d/M/yyyy" />
+							</p:inputText>
 						</f:facet>
-				</p:column>				
+					</p:cellEditor>
+				</p:column>
 
+				<p:column headerText="Totale">
+					<p:cellEditor>
+						<f:facet name="output">
+							<h:outputText value="€#{f.totale}" />
+						</f:facet>
+						<f:facet name="input">
+							<p:inputText value="#{f.totale}" style="width:100%"
+								label="Totale" />
+						</f:facet>
+					</p:cellEditor>
+				</p:column>
+
+<!-- 				<p:column style="width:32px"> -->
+<!-- 					<p:rowEditor /> -->
+<!-- 				</p:column> -->
+<!-- 				<p:column style="width:32px"> -->
+<!-- 					<p:commandLink action="#{DTC.deleteBusta(b)}"> -->
+<!-- 						<i class="ui-icon ui-icon-trash"></i> -->
+<!-- 					</p:commandLink> -->
+<!-- 				</p:column> -->
 			</p:dataTable>
 		</h:form>
 		<ui:include src="ChatBar.xhtml" />

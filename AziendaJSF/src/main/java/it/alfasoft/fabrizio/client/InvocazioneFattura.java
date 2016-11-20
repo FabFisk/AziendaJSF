@@ -3,13 +3,14 @@ package it.alfasoft.fabrizio.client;
 import it.alfasoft.fabrizio.bean.Fattura;
 import it.alfasoft.fabrizio.bean.FiltroFattura;
 
+import javax.persistence.metamodel.ListAttribute;
 import javax.ws.rs.client.Entity;
 import javax.ws.rs.client.Invocation;
 import javax.ws.rs.client.WebTarget;
 
 public class InvocazioneFattura extends Invoczione {
 	
-	private WebTarget fatTarget = baseTarget.path("/fatture");
+	private WebTarget fatTarget = baseTarget.path("/fattura");
 	
 	public InvocazioneFattura(){}
 	
@@ -18,7 +19,7 @@ public class InvocazioneFattura extends Invoczione {
 	}
 	
 	public Invocation gettAllFatture(){
-		return fatTarget.request().buildGet();
+		return fatTarget.path("/lista").request().buildGet();
 	}
 	
 	public Invocation getFatturaCode(String code){

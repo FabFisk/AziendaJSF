@@ -3,7 +3,9 @@ package it.alfasoft.fabrizio.bean;
 import java.util.Date;
 
 import javax.faces.bean.ManagedBean;
+import javax.xml.bind.annotation.XmlRootElement;
 
+@XmlRootElement
 @ManagedBean(name="f")
 public class Fattura {
 	

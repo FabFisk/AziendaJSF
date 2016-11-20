@@ -16,96 +16,166 @@
 	</ui:define>
 	<ui:define name="content">
 		<h:form>
+		
+			<p:growl id="msgs" showDetail="true" />
+			
 			<h:panelGrid id="searchCode" cellpadding="5" columns="2"
 				style="margin-bottom:10px">
-				
+
 				<h:outputText />
 				<h:outputText value="Cerca tramite codice" style="font-weight:bold" />
-				
+
 				<h:outputLabel value="Codice: " style="font-weight:bold" />
 				<p:inputText id="code1" value="#{codice}">
 					<p:ajax event="keyup" update="risCode"
 						listener="#{FCon.getFattura(codice)}" />
-				</p:inputText>				
+				</p:inputText>
 			</h:panelGrid>
 
 			<p:dataTable id="risCode" var="f" value="#{FCon.f}"
 				editable="true" style="margin-bottom:20px">
 				<f:facet name="header">
-					<h:outputText value="Fattura #{codice}" />
-       			</f:facet>
+					<h:outputText value="Fatture #{f.codice}" />
+				</f:facet>
+
+<!-- 				<p:ajax event="rowEdit" listener="#{DTC.onRowEditBusta}" -->
+<!-- 					update=":form:msgs" /> -->
+<!-- 				<p:ajax event="rowEditCancel" listener="#{DTC.onRowCancelBusta}" -->
+<!-- 					update=":form:msgs" /> -->
 
 				<p:column headerText="Codice">
+					<p:cellEditor>
 						<f:facet name="output">
 							<h:outputText value="#{f.codice}" />
 						</f:facet>
+						<f:facet name="input">
+							<p:inputText value="#{f.codice}" style="width:100%"
+								label="Codice">
+							</p:inputText>
+						</f:facet>
+					</p:cellEditor>
 				</p:column>
-								
+
 				<p:column headerText="Emissione">
-						<f:facet name="output">		
-							<h:outputText value="#{f.emissione}">					
-								<f:convertDateTime pattern="d/M/yyyy"/>
+					<p:cellEditor>
+						<f:facet name="output">
+							<h:outputText value="#{f.emissione}">
+								<f:convertDateTime pattern="d/M/yyyy" />
 							</h:outputText>
 						</f:facet>
-				</p:column>
-				
-				<p:column headerText="Totale">
-						<f:facet name="output">
-							<h:outputText value="€#{b.totale}" />
+						<f:facet name="input">
+							<p:inputText value="#{f.emissione}" style="width:100%"
+								label="Data">
+								<f:convertDateTime pattern="d/M/yyyy" />
+							</p:inputText>
 						</f:facet>
-				</p:column>				
+					</p:cellEditor>
+				</p:column>
 
+				<p:column headerText="Totale">
+					<p:cellEditor>
+						<f:facet name="output">
+							<h:outputText value="€#{f.totale}" />
+						</f:facet>
+						<f:facet name="input">
+							<p:inputText value="#{f.totale}" style="width:100%"
+								label="Totale" />
+						</f:facet>
+					</p:cellEditor>
+				</p:column>
+
+<!-- 				<p:column style="width:32px"> -->
+<!-- 					<p:rowEditor /> -->
+<!-- 				</p:column> -->
+<!-- 				<p:column style="width:32px"> -->
+<!-- 					<p:commandLink action="#{DTC.deleteBusta(b)}"> -->
+<!-- 						<i class="ui-icon ui-icon-trash"></i> -->
+<!-- 					</p:commandLink> -->
+<!-- 				</p:column> -->
 			</p:dataTable>
 
-			
 			<h:panelGrid id="searchDate" cellpadding="5" columns="2"
 				style="margin-bottom:10px">
 
 				<h:outputText />
 				<h:outputText value="Cerca in un periodo" style="font-weight:bold" />
-				
-				<h:outputLabel for="inizio" value="Dal :" style="font-weight:bold" />
-				<p:calendar id="inizio" required="true" value="#{ff.inizio}"/>
-				
-				<h:outputLabel for="fine" value="Al :" style="font-weight:bold" />
-				<p:calendar id="fine" required="true" value="#{ff.fine}"/>
 
-				<p:commandButton value="Cerca" id="btnCode"
-					process="@all" update="risDate"
-					actionListener="#{Fcon.getFattureFiltrate(ff)}" />
+				<h:outputLabel for="inizio" value="Dal :" style="font-weight:bold" />
+				<p:calendar id="inizio" required="true" value="#{ff.inizio}" />
+
+				<h:outputLabel for="fine" value="Al :" style="font-weight:bold" />
+				<p:calendar id="fine" required="true" value="#{ff.fine}" />
+
+				<p:commandButton value="Cerca" id="btnCode" process="@all"
+					update="risDate" actionListener="#{Fcon.getFattureFiltrate(ff)}" />
 			</h:panelGrid>
 			
 			<p:dataTable id="risDate" var="f" value="#{FCon.listaFatture}"
 				editable="true" style="margin-bottom:20px">
 				<f:facet name="header">
-					<h:outputText value="Fatture #{ff.inizio} #{ff.fine}">					
-								<f:convertDateTime pattern="d/M/yyyy"/>
+					<h:outputText value="Fatture #{ff.inizio} #{ff.fine}">
+						<f:convertDateTime pattern="d/M/yyyy" />
 					</h:outputText>
-       			</f:facet>
+				</f:facet>
+
+<!-- 				<p:ajax event="rowEdit" listener="#{DTC.onRowEditBusta}" -->
+<!-- 					update=":form:msgs" /> -->
+<!-- 				<p:ajax event="rowEditCancel" listener="#{DTC.onRowCancelBusta}" -->
+<!-- 					update=":form:msgs" /> -->
 
 				<p:column headerText="Codice">
+					<p:cellEditor>
 						<f:facet name="output">
 							<h:outputText value="#{f.codice}" />
 						</f:facet>
+						<f:facet name="input">
+							<p:inputText value="#{f.codice}" style="width:100%"
+								label="Codice">
+							</p:inputText>
+						</f:facet>
+					</p:cellEditor>
 				</p:column>
-								
+
 				<p:column headerText="Emissione">
-						<f:facet name="output">		
-							<h:outputText value="#{f.emissione}">					
-								<f:convertDateTime pattern="d/M/yyyy"/>
+					<p:cellEditor>
+						<f:facet name="output">
+							<h:outputText value="#{f.emissione}">
+								<f:convertDateTime pattern="d/M/yyyy" />
 							</h:outputText>
 						</f:facet>
-				</p:column>
-				
-				<p:column headerText="Totale">
-						<f:facet name="output">
-							<h:outputText value="€#{b.totale}" />
+						<f:facet name="input">
+							<p:inputText value="#{f.emissione}" style="width:100%"
+								label="Data">
+								<f:convertDateTime pattern="d/M/yyyy" />
+							</p:inputText>
 						</f:facet>
-				</p:column>				
+					</p:cellEditor>
+				</p:column>
 
+				<p:column headerText="Totale">
+					<p:cellEditor>
+						<f:facet name="output">
+							<h:outputText value="€#{f.totale}" />
+						</f:facet>
+						<f:facet name="input">
+							<p:inputText value="#{f.totale}" style="width:100%"
+								label="Totale" />
+						</f:facet>
+					</p:cellEditor>
+				</p:column>
+
+<!-- 				<p:column style="width:32px"> -->
+<!-- 					<p:rowEditor /> -->
+<!-- 				</p:column> -->
+<!-- 				<p:column style="width:32px"> -->
+<!-- 					<p:commandLink action="#{DTC.deleteBusta(b)}"> -->
+<!-- 						<i class="ui-icon ui-icon-trash"></i> -->
+<!-- 					</p:commandLink> -->
+<!-- 				</p:column> -->
 			</p:dataTable>
+
 		</h:form>
-		
+
 		<ui:include src="ChatBar.xhtml" />
 	</ui:define>
 </ui:composition>
