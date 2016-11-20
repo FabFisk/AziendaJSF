@@ -3,7 +3,6 @@ package it.alfasoft.fabrizio.client;
 import it.alfasoft.fabrizio.bean.Fattura;
 import it.alfasoft.fabrizio.bean.FiltroFattura;
 
-import javax.persistence.metamodel.ListAttribute;
 import javax.ws.rs.client.Entity;
 import javax.ws.rs.client.Invocation;
 import javax.ws.rs.client.WebTarget;

@@ -8,11 +8,6 @@
 	xmlns:p="http://primefaces.org/ui">
 
 <ui:composition template="../../layout/layout.xhtml">
-	<ui:define name="meta">
-		<f:metadata>
-			<f:event listener="#{FCon.getAllFatture()}" type="preRenderView" />
-		</f:metadata>
-	</ui:define>
 	<ui:define name="bar">
 		<ui:include src="Toolbar.xhtml" />
 	</ui:define>
