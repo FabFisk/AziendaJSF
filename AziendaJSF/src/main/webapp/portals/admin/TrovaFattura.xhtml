@@ -17,7 +17,7 @@
 	<ui:define name="content">
 		<h:form>
 		
-			<p:growl id="msgs" showDetail="true" />
+<!-- 			<p:growl id="msgs" showDetail="true" /> -->
 			
 			<h:panelGrid id="searchCode" cellpadding="5" columns="2"
 				style="margin-bottom:10px">
@@ -38,9 +38,9 @@
 					<h:outputText value="Fattura #{codice}" />
 				</f:facet>
 
-<!-- 				<p:ajax event="rowEdit" listener="#{DTC.onRowEditBusta}" -->
+<!-- 				<p:ajax event="rowEdit" listener="#{FCon.onRowEdit}" -->
 <!-- 					update=":form:msgs" /> -->
-<!-- 				<p:ajax event="rowEditCancel" listener="#{DTC.onRowCancelBusta}" -->
+<!-- 				<p:ajax event="rowEditCancel" listener="#{FCon.onRowCancel}" -->
 <!-- 					update=":form:msgs" /> -->
 
 				<p:column headerText="Codice">
@@ -88,7 +88,7 @@
 <!-- 					<p:rowEditor /> -->
 <!-- 				</p:column> -->
 <!-- 				<p:column style="width:32px"> -->
-<!-- 					<p:commandLink action="#{DTC.deleteBusta(b)}"> -->
+<!-- 					<p:commandLink action="#{FCon.onRowDelete(f)}"> -->
 <!-- 						<i class="ui-icon ui-icon-trash"></i> -->
 <!-- 					</p:commandLink> -->
 <!-- 				</p:column> -->
@@ -118,9 +118,9 @@
 					</h:outputText>
 				</f:facet>
 
-<!-- 				<p:ajax event="rowEdit" listener="#{DTC.onRowEditBusta}" -->
+<!-- 				<p:ajax event="rowEdit" listener="#{FCon.onRowEdit}" -->
 <!-- 					update=":form:msgs" /> -->
-<!-- 				<p:ajax event="rowEditCancel" listener="#{DTC.onRowCancelBusta}" -->
+<!-- 				<p:ajax event="rowEditCancel" listener="#{FCon.onRowDelete}" -->
 <!-- 					update=":form:msgs" /> -->
 
 				<p:column headerText="Codice">
@@ -168,7 +168,7 @@
 <!-- 					<p:rowEditor /> -->
 <!-- 				</p:column> -->
 <!-- 				<p:column style="width:32px"> -->
-<!-- 					<p:commandLink action="#{DTC.deleteBusta(b)}"> -->
+<!-- 					<p:commandLink action="#{FCon.onRowDelete(f)}"> -->
 <!-- 						<i class="ui-icon ui-icon-trash"></i> -->
 <!-- 					</p:commandLink> -->
 <!-- 				</p:column> -->
