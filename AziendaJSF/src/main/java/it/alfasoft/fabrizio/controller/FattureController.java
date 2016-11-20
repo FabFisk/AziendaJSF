@@ -74,6 +74,7 @@ public class FattureController {
 		Response risp;
 		risp = invFatt.getFattureFiltrate(ff).invoke();
 		this.setListaFatture(risp.readEntity(new GenericType<List<Fattura>>(){}));
+		System.out.println(listaFatture);
 		return listaFatture;
 	}
 

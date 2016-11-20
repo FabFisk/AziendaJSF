@@ -26,7 +26,7 @@ public class InvocazioneFattura extends Invoczione {
 	}
 	
 	public Invocation getFattureFiltrate(FiltroFattura ff){
-		return fatTarget.queryParam("", ff).request().buildGet();
+		return fatTarget.queryParam("/filtro", ff).request().buildGet();
 	}
 
 }

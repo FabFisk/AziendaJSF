@@ -107,7 +107,7 @@
 				<p:calendar id="fine" required="true" value="#{ff.fine}" />
 
 				<p:commandButton value="Cerca" id="btnCode" process="@all"
-					update="risDate" actionListener="#{Fcon.getFattureFiltrate(ff)}" />
+					update="risDate" actionListener="#{FCon.getFattureFiltrate(ff)}" />
 			</h:panelGrid>
 			
 			<p:dataTable id="risDate" var="f" value="#{FCon.listaFatture}"
