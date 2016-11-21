@@ -2,6 +2,7 @@ package it.alfasoft.fabrizio.controller;
 
 import it.alfasoft.fabrizio.bean.BustaPaga;
 import it.alfasoft.fabrizio.bean.Dipendente;
+import it.alfasoft.fabrizio.service.GestioneBustePaga;
 import it.alfasoft.fabrizio.service.GestioneUtenti;
 
 import java.io.Serializable;
@@ -20,11 +21,13 @@ public class BustaController implements Serializable {
 	 */
 	private static final long serialVersionUID = 1L;
 	
+	private GestioneBustePaga gB;
 	private GestioneUtenti gU;
 	private long scelta;
 	private Map<String, Long> dipendenti;
 	
 	public BustaController(){
+		gB = new GestioneBustePaga();
 		gU = new GestioneUtenti();
 		dipendenti = new HashMap<String, Long>();
 		for(Dipendente d : gU.getListDipendenti()){
@@ -38,6 +41,14 @@ public class BustaController implements Serializable {
 
 	public void setgU(GestioneUtenti gU) {
 		this.gU = gU;
+	}
+	
+	public GestioneBustePaga getgB() {
+		return gB;
+	}
+
+	public void setgB(GestioneBustePaga gB) {
+		this.gB = gB;
 	}
 
 	public Map<String, Long> getDipendenti() {
@@ -62,7 +73,7 @@ public class BustaController implements Serializable {
 	
 	public String createBusta(BustaPaga b){
 		b.setDipendente(gU.readDipendente(scelta));
-		gU.creteBusta(b);
+		gB.creteBusta(b);
 		return "RegistraBusta?faces-redirect=true";
 	}	
 	

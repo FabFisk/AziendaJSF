@@ -4,6 +4,7 @@ import it.alfasoft.fabrizio.bean.BustaPaga;
 import it.alfasoft.fabrizio.bean.Cliente;
 import it.alfasoft.fabrizio.bean.Dipendente;
 import it.alfasoft.fabrizio.bean.Utente;
+import it.alfasoft.fabrizio.service.GestioneBustePaga;
 import it.alfasoft.fabrizio.service.GestioneUtenti;
 import it.alfasoft.fabrizio.utility.Ruolo;
 
@@ -27,23 +28,33 @@ public class DTController implements Serializable {
 	private static final long serialVersionUID = 1L;
 	
 	private GestioneUtenti gU;
+	private GestioneBustePaga gB;
 	private List<Cliente> clienti;
 	private List<Dipendente> dipendenti;
 	private List<BustaPaga> bustePaga;
 	
 	public DTController(){
 		gU = new GestioneUtenti();
+		gB = new GestioneBustePaga();
 		this.clienti = gU.getListClienti();
 		this.dipendenti = gU.getListDipendenti();
-		this.bustePaga = gU.getListBuste();
+		this.bustePaga = gB.getListBuste();
 	}
 
-	public GestioneUtenti getG() {
+	public GestioneUtenti getGU() {
 		return gU;
 	}
 
-	public void setG(GestioneUtenti g) {
-		this.gU = g;
+	public void setGU(GestioneUtenti gU) {
+		this.gU = gU;
+	}
+	
+	public GestioneBustePaga getGB() {
+		return gB;
+	}
+
+	public void setGB(GestioneBustePaga g) {
+		this.gB = g;
 	}
 
 	public List<Cliente> getClienti() {
@@ -108,12 +119,12 @@ public class DTController implements Serializable {
     }
     
 	public String updateBusta(BustaPaga b){
-		gU.updateBusta(b);
+		gB.updateBusta(b);
 		return "ElencoBuste?faces-redirect=true";	
 	}
 	
 	public String deleteBusta(BustaPaga b){
-		gU.deleteBusta(b);		
+		gB.deleteBusta(b);		
 		return "ElencoBuste?faces-redirect=true";
 	}
 	
