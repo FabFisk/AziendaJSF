@@ -25,9 +25,9 @@ public class InvocazioneFattura extends Invoczione {
 	}
 	
 	public Invocation getFattureFiltrate(String inizio, String fine){
-		return fatTarget.path("/fatturaProva")
-				.queryParam("inizio", inizio)
-				.queryParam("fine", fine).request().buildGet();
+		return fatTarget.path("/ricerca")
+				.queryParam("dateInizio", inizio)
+				.queryParam("dateFine", fine).request().buildGet();
 	}
 	
 	public Invocation deleteFattura(String code){

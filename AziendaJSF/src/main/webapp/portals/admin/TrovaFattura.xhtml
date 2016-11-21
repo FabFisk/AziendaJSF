@@ -113,7 +113,7 @@
 			<p:dataTable id="risDate" var="f" value="#{FCon.listaFatture}"
 				editable="true" style="margin-bottom:20px">
 				<f:facet name="header">
-					<h:outputText value="Fatture #{ff.start} #{ff.end}">
+					<h:outputText value="Fatture #{ff.query}">
 						<f:convertDateTime pattern="d/M/yyyy" />
 					</h:outputText>
 				</f:facet>

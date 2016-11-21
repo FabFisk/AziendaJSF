@@ -12,8 +12,7 @@ public class FiltroFattura {
 	
 	private @QueryParam("inizio")Date inizio;
 	private @QueryParam("fine")Date fine;
-	private String start;
-	private String end;
+	private String query;
 	
 	public FiltroFattura(){}
 
@@ -32,35 +31,13 @@ public class FiltroFattura {
 	public void setFine(Date fine) {
 		this.fine = fine;
 	}
-	
-	public void setStart(Date data){
-		this.setInizio(data);
-		this.setStart(this.parseDate(data));		
+
+	public String getQuery() {
+		return query;
 	}
-	
-	public void setEnd(Date data){
-		this.setFine(data);
-		this.setEnd(this.parseDate(data));			
+
+	public void setQuery(String query) {
+		this.query = query;
 	}
 	
-	public String parseDate(Date data){
-		return DataUtility.dateToString(data);
-	}
-
-	public String getStart() {
-		return start;
-	}
-
-	public void setStart(String start) {
-		this.start = start;
-	}
-
-	public String getEnd() {
-		return end;
-	}
-
-	public void setEnd(String end) {
-		this.end = end;
-	}
-
 }

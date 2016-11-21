@@ -77,8 +77,7 @@ public class FattureController {
 		Response risp;
 		String inizio = DataUtility.dateToString(ff.getInizio());
 		String fine = DataUtility.dateToString(ff.getFine());
-		ff.setStart(inizio);
-		ff.setEnd(fine);
+		ff.setQuery(inizio+" - "+fine);
 		risp = invFatt.getFattureFiltrate(inizio, fine).invoke();
 		this.setListaFatture(risp.readEntity(new GenericType<List<Fattura>>(){}));
 		return listaFatture;
