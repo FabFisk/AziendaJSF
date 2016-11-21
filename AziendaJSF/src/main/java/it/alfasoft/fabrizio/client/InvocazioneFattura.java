@@ -1,7 +1,6 @@
 package it.alfasoft.fabrizio.client;
 
 import it.alfasoft.fabrizio.bean.Fattura;
-import it.alfasoft.fabrizio.bean.FiltroFattura;
 
 import javax.ws.rs.client.Entity;
 import javax.ws.rs.client.Invocation;
@@ -25,9 +24,10 @@ public class InvocazioneFattura extends Invoczione {
 		return fatTarget.path(code).request().buildGet();
 	}
 	
-	public Invocation getFattureFiltrate(FiltroFattura ff){
-//		System.out.println(ff.getInizio()+" "+ff.getFine());
-		return fatTarget.queryParam("/fatturaProva", ff).request().buildGet();
+	public Invocation getFattureFiltrate(String inizio, String fine){
+		return fatTarget.path("/fatturaProva")
+				.queryParam("inizio", inizio)
+				.queryParam("fine", fine).request().buildGet();
 	}
 	
 	public Invocation deleteFattura(String code){

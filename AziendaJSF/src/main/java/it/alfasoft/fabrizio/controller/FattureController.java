@@ -1,10 +1,12 @@
 package it.alfasoft.fabrizio.controller;
 
-import java.util.List;
-
 import it.alfasoft.fabrizio.bean.Fattura;
 import it.alfasoft.fabrizio.bean.FiltroFattura;
 import it.alfasoft.fabrizio.client.InvocazioneFattura;
+import it.alfasoft.fabrizio.utility.DataUtility;
+
+import java.util.ArrayList;
+import java.util.List;
 
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ViewScoped;
@@ -21,6 +23,7 @@ public class FattureController {
 	
 	public FattureController(){
 		setInvFatt(new InvocazioneFattura());
+		listaFatture = new ArrayList<Fattura>();
 	}
 
 	public InvocazioneFattura getInvFatt() {
@@ -72,10 +75,12 @@ public class FattureController {
 	
 	public List<Fattura> getFattureFiltrate(FiltroFattura ff){
 		Response risp;
-//		System.out.println(ff.getInizio()+" "+ff.getFine());
-		risp = invFatt.getFattureFiltrate(ff).invoke();
+		String inizio = DataUtility.dateToString(ff.getInizio());
+		String fine = DataUtility.dateToString(ff.getFine());
+		ff.setStart(inizio);
+		ff.setEnd(fine);
+		risp = invFatt.getFattureFiltrate(inizio, fine).invoke();
 		this.setListaFatture(risp.readEntity(new GenericType<List<Fattura>>(){}));
-//		System.out.println(listaFatture);
 		return listaFatture;
 	}
 
