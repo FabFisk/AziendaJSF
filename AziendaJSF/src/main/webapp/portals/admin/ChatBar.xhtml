@@ -5,28 +5,39 @@
 	xmlns:ui="http://java.sun.com/jsf/facelets"
 	xmlns:h="http://java.sun.com/jsf/html"
 	xmlns:f="http://java.sun.com/jsf/core"
-	xmlns:p="http://primefaces.org/ui">
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:pe="http://primefaces.org/ui/extensions">
 
 <h:form>
 	<p:toolbar styleClass="chatBar">
-		<f:facet id="chat" name="left">
-<!-- 			<p:commandButton id="chat1" value="Chat" type="button" -->
-<!-- 				icon="fa fa-fw fa-comment"/> -->
-<!-- 			<p:menu overlay="true" trigger="chat1" my="left bottom" at="left top" > -->
-<!-- 				<p:menuitem value="Tizio Caio" /> -->
-<!-- 				<p:menuitem value="Pippo" /> -->
-<!-- 				<p:menuitem value="Paolo" /> -->
-<!-- 				<p:menuitem value="Maria" /> -->
-<!-- 			</p:menu> -->
+		<f:facet name="left">
+		
+			<ui:repeat value="#{onlineMenu.online}" var="d">		    		    
+		    	<p:commandButton id="btn#{d.id_utente}" value="#{d.cognome} #{d.nome} " type="button"
+					icon="fa fa-fw fa-comment" />
+				<p:overlayPanel id="pnl_#{d.id_utente}" for="" showCloseIcon="true"
+					hideEffect="fade" overlay="true" my="left bottom"
+					at="left top" style="width: 200px">				
+				</p:overlayPanel>        		
+   			</ui:repeat>			
+		
+			<p:commandButton id="chatBtn1" value="Chat" type="button"
+				icon="fa fa-fw fa-comment" />
+			<p:overlayPanel id="chatPanel1" for="chatBtn1" showCloseIcon="true"
+				hideEffect="fade" overlay="true" trigger="chat1" my="left bottom"
+				at="left top" style="width: 200px">				
+			</p:overlayPanel>
 		</f:facet>
 		<f:facet name="right">
-			<span class="ui-separator">
-				<span class="ui-icon ui-icon-grip-dotted-vertical" />
+			<span class="ui-separator"> <span
+				class="ui-icon ui-icon-grip-dotted-vertical" />
 			</span>
 			<p:commandButton id="online" value="Chat" type="button"
 				icon="fa fa-fw fa-comment" />
-			<p:menu overlay="true" trigger="online" model="#{onlineMenu.model}"
-				my="left bottom" at="left top" />
+			<!-- 			<p:poll interval="3" listener="#{onlineMenu.updateModel()}" update="menu" />				 -->
+			<p:menu id="menu" overlay="true" trigger="online"
+				model="#{onlineMenu.model}" my="left bottom" at="left top">
+			</p:menu>
 		</f:facet>
 	</p:toolbar>
 </h:form>
