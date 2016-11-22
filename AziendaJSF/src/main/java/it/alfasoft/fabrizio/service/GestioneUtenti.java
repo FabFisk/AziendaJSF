@@ -93,4 +93,8 @@ public class GestioneUtenti implements Serializable{
 	public Admin readAdmin(long id) {
 		return aDAO.readUser(id);
 	}
+
+	public boolean readUser(String username, String password) {
+		return uDAO.readUserUserPsw(username, password);
+	}
 }

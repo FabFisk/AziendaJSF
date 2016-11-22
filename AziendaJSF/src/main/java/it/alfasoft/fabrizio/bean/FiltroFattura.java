@@ -1,7 +1,5 @@
 package it.alfasoft.fabrizio.bean;
 
-import it.alfasoft.fabrizio.utility.DataUtility;
-
 import java.util.Date;
 
 import javax.faces.bean.ManagedBean;
