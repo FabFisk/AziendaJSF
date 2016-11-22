@@ -11,9 +11,10 @@
 	<ui:define name="content">
 	
 		<h:form>
-			<h:inputText value="#{log.username}"></h:inputText>
-			<h:inputSecret value="#{log.password}"></h:inputSecret>
-			<h:commandButton value="login" action="#{lc.login(log)}"/>
+			<h:inputText value="#{lc.username}"></h:inputText>
+			<h:inputSecret value="#{lc.password}"></h:inputSecret>
+			<h:commandButton value="login" action="#{lc.login()}"/>
+			
 		</h:form>
 
 	</ui:define>

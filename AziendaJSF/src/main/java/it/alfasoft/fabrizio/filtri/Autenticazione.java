@@ -21,6 +21,7 @@ import javax.servlet.http.HttpSession;
 @WebFilter("/portals/*")
 public class Autenticazione implements Filter {
 
+	private FilterConfig filterConfig = null;
     /**
      * Default constructor. 
      */
@@ -45,12 +46,13 @@ public class Autenticazione implements Filter {
 		HttpServletResponse httpRes = (HttpServletResponse)response;
 		HttpSession session = httpReq.getSession();
 		
-		LoginController logCon = (LoginController)session.getAttribute("LCon");
+		LoginController logCon = (LoginController)session.getAttribute("lc");
 		
-		if(!(logCon==null) && logCon.isLoggato()){
-			httpRes.sendRedirect("");
+		if(logCon.isLoggato()==false){
+			httpRes.sendRedirect("Login.xhtml");	
+			System.out.println("ciao da filtro");
 		}
-		httpRes.sendRedirect("");		
+		System.out.println("ciao da filtro2");	
 
 		// pass the request along the filter chain
 		chain.doFilter(request, response);
@@ -61,6 +63,7 @@ public class Autenticazione implements Filter {
 	 */
 	public void init(FilterConfig fConfig) throws ServletException {
 		// TODO Auto-generated method stub
+		this.filterConfig = fConfig;
 	}
 
 }

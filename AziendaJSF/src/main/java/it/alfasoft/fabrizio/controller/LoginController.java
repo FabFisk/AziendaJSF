@@ -1,10 +1,10 @@
 package it.alfasoft.fabrizio.controller;
 
-import it.alfasoft.fabrizio.bean.LoginBean;
-import it.alfasoft.fabrizio.service.GestioneUtenti;
-
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
+
+import it.alfasoft.fabrizio.service.GestioneUtenti;
+import it.alfasoft.fabrizio.service.PSWCodifer;
 
 @ManagedBean(name="lc")
 @SessionScoped
@@ -51,15 +51,13 @@ public class LoginController {
 		this.gU = gU;
 	}
 
-	public String login(LoginBean lb){
-		String risp = "Login?faces-redirect=true";
-		if(gU.readUser(lb.getUsername(), lb.getPassword())){
-			this.username = lb.getUsername();
-			this.password = lb.getPassword();
+	public String login(){
+		this.loggato = false;
+		if(gU.readUser(this.username, PSWCodifer.codificaPsw(this.password))){
 			this.loggato = true;
-			risp = "Home?faces-redirect=true";	
+			return "Home?faces-redirect=true";	
 		}
-		return risp;	
+		return "Login?faces-redirect=true";	
 	}
 
 }
