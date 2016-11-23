@@ -42,7 +42,7 @@ public class OnlineMenu {
         	firstSubmenu.addElement(item);
         }
         
-        online.add(gU.getOnline().get(0));
+//        online.add(gU.getOnline().get(0));
         model.addElement(firstSubmenu);
     }
  
