@@ -18,10 +18,9 @@ import javax.servlet.http.HttpSession;
 /**
  * Servlet Filter implementation class Autenticazione
  */
-@WebFilter("/portals/*")
+@WebFilter("/faces/portals/*")
 public class Autenticazione implements Filter {
 
-	private FilterConfig filterConfig = null;
     /**
      * Default constructor. 
      */
@@ -48,8 +47,8 @@ public class Autenticazione implements Filter {
 		
 		LoginController logCon = (LoginController)session.getAttribute("lc");
 		
-		if(logCon.isLoggato()==false){
-			httpRes.sendRedirect("Login.xhtml");	
+		if(logCon == null || logCon.isLoggato()==false){
+			httpRes.sendRedirect(httpReq.getContextPath()+"/faces/Login.xhtml");	
 			System.out.println("ciao da filtro");
 		}
 		System.out.println("ciao da filtro2");	
@@ -63,7 +62,7 @@ public class Autenticazione implements Filter {
 	 */
 	public void init(FilterConfig fConfig) throws ServletException {
 		// TODO Auto-generated method stub
-		this.filterConfig = fConfig;
+		System.out.println("ciao da filtro init");	
 	}
 
 }

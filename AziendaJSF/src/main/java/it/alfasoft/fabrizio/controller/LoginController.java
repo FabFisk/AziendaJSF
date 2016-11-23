@@ -55,7 +55,7 @@ public class LoginController {
 		this.loggato = false;
 		if(gU.readUser(this.username, PSWCodifer.codificaPsw(this.password))){
 			this.loggato = true;
-			return "Home?faces-redirect=true";	
+			return "portals/admin/Home?faces-redirect=true";	
 		}
 		return "Login?faces-redirect=true";	
 	}
