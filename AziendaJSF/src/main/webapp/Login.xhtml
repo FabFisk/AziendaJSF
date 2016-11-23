@@ -9,12 +9,29 @@
 
 <ui:composition template="layout/layout.xhtml">
 	<ui:define name="content">
-	
 		<h:form>
-			<h:inputText value="#{lc.username}"></h:inputText>
-			<h:inputSecret value="#{lc.password}"></h:inputSecret>
-			<h:commandButton value="login" action="#{lc.login()}"/>
-			
+			<p:panel header="Login">
+				<h:panelGrid id="grid" columns="4" cellpadding="5">
+					<h:outputLabel for="username" value="Username:"
+						style="font-weight:bold" />
+					<p:inputText id="username" value="#{lc.username}" required="true"
+						label="Username" />
+					<p:message for="username" />
+					<h:outputText value="#{lc.username}" />
+
+					<h:outputLabel for="password" value="Password:"
+						style="font-weight:bold" />
+					<p:password id="password" value="#{lc.password}" required="true"
+						label="Password" />
+					<p:message for="password" />
+					<h:outputText value="#{lc.password}" />
+
+				</h:panelGrid>
+
+				<p:commandButton action="#{lc.login()}" value="Login"
+					update="grid" icon="ui-icon-check" validateClient="true"
+					style="margin-right:10px" />
+			</p:panel>
 		</h:form>
 
 	</ui:define>

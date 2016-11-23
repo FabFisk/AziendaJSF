@@ -27,7 +27,7 @@
 		</f:facet>
 		<f:facet name="right">
 			<p:menuButton value="Options">
-				<p:menuitem>
+				<p:menuitem outcome="AggiornaProfilo">
 					<p:panelGrid columns="2">
 						<f:facet name="header">
 							<p:graphicImage library="img" name="rsz_alfasoftsito.png" />
@@ -37,7 +37,7 @@
 					</p:panelGrid>
 				</p:menuitem>
 				<p:menuitem value="Test" icon="fa fa-fw fa-home" />
-				<p:menuitem value="Test" icon="fa fa-fw fa-sign-out" />
+					<p:menuitem value="Logout" icon="fa fa-fw fa-sign-out" action="#{lc.logout()}" ajax="false"/>
 			</p:menuButton>
 		</f:facet>
 	</p:toolbar>
