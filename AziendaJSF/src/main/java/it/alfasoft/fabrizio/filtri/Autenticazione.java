@@ -49,9 +49,7 @@ public class Autenticazione implements Filter {
 		
 		if(logCon == null || logCon.isLoggato()==false){
 			httpRes.sendRedirect(httpReq.getContextPath()+"/faces/Login.xhtml");	
-			System.out.println("ciao da filtro");
-		}
-		System.out.println("ciao da filtro2");	
+		}	
 
 		// pass the request along the filter chain
 		chain.doFilter(request, response);

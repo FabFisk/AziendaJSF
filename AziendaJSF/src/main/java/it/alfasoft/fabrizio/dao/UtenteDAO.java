@@ -45,8 +45,8 @@ public class UtenteDAO {
 		return u;
 	}	
 	
-	public boolean readUserUserPsw(String user, String psw){
-		boolean bool = false;
+	public Utente readUserUserPsw(String user, String psw){
+		Utente u = null;
 		Session session = HibernateUtil.openSession();
 		Transaction tx = null;
 		try {
@@ -56,17 +56,14 @@ public class UtenteDAO {
 					.createQuery("from Utente where username=:userInserito and password=:pswInserito ");
 			query.setString("userInserito", user);
 			query.setString("pswInserito", psw);
-			Utente u = (Utente) query.uniqueResult();
-			if(u!=null){
-				bool = true;
-			}
+			u = (Utente) query.uniqueResult();
 			tx.commit();
 		} catch (Exception ex) {
 			tx.rollback();
 		} finally {
 			session.close();
 		}
-		return bool;
+		return u;
 	}
 	
 	public Utente readUserNomeCog(String nome, String cognome){

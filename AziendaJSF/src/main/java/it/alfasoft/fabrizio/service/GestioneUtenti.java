@@ -18,9 +18,6 @@ public class GestioneUtenti implements Serializable{
 	AdminDAO aDAO = new AdminDAO();
 	ClienteDAO cDAO = new ClienteDAO();
 	DipendenteDAO dDAO = new DipendenteDAO();
-	RubricaDao rDAO = new RubricaDao();
-	VoceDao vDAO = new VoceDao();	
-	BustaDAO bDAO = new BustaDAO();
 	ServizioRubrica s = new ServizioRubrica();
 	
 	public boolean createCliente(Cliente c) {
@@ -94,7 +91,7 @@ public class GestioneUtenti implements Serializable{
 		return aDAO.readUser(id);
 	}
 
-	public boolean readUser(String username, String password) {
+	public Utente readUser(String username, String password) {
 		return uDAO.readUserUserPsw(username, password);
 	}
 }

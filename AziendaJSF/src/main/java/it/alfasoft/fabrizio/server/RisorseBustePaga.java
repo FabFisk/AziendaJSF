@@ -17,7 +17,6 @@ public class RisorseBustePaga {
 	
 	GestioneBustePaga gB = new GestioneBustePaga();
 	
-	@Path("/lista")
 	@GET
 	@Produces(MediaType.APPLICATION_JSON)
 	public List<BustaPaga> getAllBuste() {

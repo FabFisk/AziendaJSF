@@ -25,7 +25,8 @@
         </p:submenu>
         <p:submenu label="Profilo">
         	<p:menuitem value="Modifica Profilo" outcome="AggiornaProfilo" icon="fa fa-fw fa-user"/>
-        	<p:menuitem value="Logout" icon="fa fa-fw fa-sign-out"/>
+<!--         	<h:commandButton value="Logout" icon="fa fa-fw fa-sign-out" action="#{lc.logout()}"/> -->
+        	<p:menuitem value="Logout" icon="fa fa-fw fa-sign-out" action="#{lc.logout()}" ajax="false"/>
         </p:submenu>
     </p:menu>
 </h:form>
