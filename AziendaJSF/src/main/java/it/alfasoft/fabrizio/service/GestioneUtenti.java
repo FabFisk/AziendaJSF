@@ -6,6 +6,7 @@ import java.util.List;
 import it.alfasoft.fabrizio.bean.*;
 import it.alfasoft.fabrizio.dao.*;
 import it.alfasoft.fabrizio.rubrica.*;
+import it.alfasoft.fabrizio.utility.PSWCodifer;
 import it.alfasoft.fabrizio.utility.Ruolo;
 
 public class GestioneUtenti implements Serializable{
@@ -14,10 +15,10 @@ public class GestioneUtenti implements Serializable{
 	 * 
 	 */
 	private static final long serialVersionUID = 1L;
-	UtenteDAO uDAO = new UtenteDAO();
-	AdminDAO aDAO = new AdminDAO();
-	ClienteDAO cDAO = new ClienteDAO();
-	DipendenteDAO dDAO = new DipendenteDAO();
+	IUtenteDAO uDAO = new UtenteDAO();
+	IAdminDAO aDAO = new AdminDAO();
+	IClienteDAO cDAO = new ClienteDAO();
+	IDipendenteDAO dDAO = new DipendenteDAO();
 	ServizioRubrica s = new ServizioRubrica();
 	
 	public boolean createCliente(Cliente c) {

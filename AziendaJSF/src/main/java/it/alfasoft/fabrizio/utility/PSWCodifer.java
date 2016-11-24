@@ -1,4 +1,4 @@
-package it.alfasoft.fabrizio.service;
+package it.alfasoft.fabrizio.utility;
 
 import java.security.MessageDigest;
 

@@ -2,12 +2,13 @@ package it.alfasoft.fabrizio.service;
 
 import it.alfasoft.fabrizio.bean.BustaPaga;
 import it.alfasoft.fabrizio.dao.BustaDAO;
+import it.alfasoft.fabrizio.dao.IBustaPagaDAO;
 
 import java.util.List;
 
 public class GestioneBustePaga {
 	
-	BustaDAO bDAO = new BustaDAO();
+	IBustaPagaDAO bDAO = new BustaDAO();
 	
 	public void creteBusta(BustaPaga b) {
 		bDAO.createBusta(b);

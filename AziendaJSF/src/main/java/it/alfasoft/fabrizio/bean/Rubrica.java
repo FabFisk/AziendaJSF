@@ -1,4 +1,4 @@
-package it.alfasoft.fabrizio.rubrica;
+package it.alfasoft.fabrizio.bean;
 
 import java.io.Serializable;
 import java.util.HashSet;

@@ -1,4 +1,4 @@
-package it.alfasoft.fabrizio.rubrica;
+package it.alfasoft.fabrizio.bean;
 
 import java.io.Serializable;
 
@@ -9,11 +9,9 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
 
-import it.alfasoft.fabrizio.utility.Validate;
-
 @Entity
 @ManagedBean(name="v")
-public class Voce implements Validate, Serializable {
+public class Voce implements Serializable {
 
 	/**
 	 * 
@@ -68,14 +66,6 @@ public class Voce implements Validate, Serializable {
 	}
 	public void setRubrica(Rubrica rubrica) {
 		this.rubrica = rubrica;
-	}
-	public boolean isValid() {
-		boolean token = false;
-		if(!this.nome.isEmpty() && !this.cognome.isEmpty()
-				&& !this.tel.isEmpty()){
-			token = true;
-		}
-		return token;
 	}
 
 }

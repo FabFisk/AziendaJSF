@@ -10,9 +10,13 @@ import org.hibernate.Query;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
 
-public class ClienteDAO {
+public class ClienteDAO implements IClienteDAO {
 
 	//1- Create
+	/* (non-Javadoc)
+	 * @see it.alfasoft.fabrizio.dao.IClienteDAO#createUser(it.alfasoft.fabrizio.bean.Cliente)
+	 */
+	@Override
 	public boolean createUser(Cliente c){
 		boolean res = false;
 		Session session = HibernateUtil.openSession();
@@ -31,6 +35,10 @@ public class ClienteDAO {
 		return res;
 	}	
 	//2- Read
+	/* (non-Javadoc)
+	 * @see it.alfasoft.fabrizio.dao.IClienteDAO#getAll()
+	 */
+	@Override
 	@SuppressWarnings("unchecked")
 	public List<Cliente> getAll() {
 		List<Cliente> clienti = new ArrayList<Cliente>();
@@ -50,6 +58,10 @@ public class ClienteDAO {
 		return clienti;
 	}
 	
+	/* (non-Javadoc)
+	 * @see it.alfasoft.fabrizio.dao.IClienteDAO#readUser(long)
+	 */
+	@Override
 	public Cliente readUser(long id_c){
 		Cliente a = null;
 		Session session = HibernateUtil.openSession();
@@ -67,6 +79,10 @@ public class ClienteDAO {
 		return a;
 	}	
 	//3- Update
+	/* (non-Javadoc)
+	 * @see it.alfasoft.fabrizio.dao.IClienteDAO#updateUser(it.alfasoft.fabrizio.bean.Cliente)
+	 */
+	@Override
 	public boolean updateUser(Cliente c){
 		boolean res = false;
 		Session session = HibernateUtil.openSession();
@@ -86,6 +102,10 @@ public class ClienteDAO {
 	}	
 	
 	//4- Delete
+	/* (non-Javadoc)
+	 * @see it.alfasoft.fabrizio.dao.IClienteDAO#deleteUser(it.alfasoft.fabrizio.bean.Cliente)
+	 */
+	@Override
 	public boolean deleteUser(Cliente c){
 		boolean res = false;
 		Session session = HibernateUtil.openSession();
@@ -103,16 +123,4 @@ public class ClienteDAO {
 		}
 		return res;
 	}
-	
-	public void fillDatiCliente(Cliente c) {		
-		Cliente cTemp = this.readUser(c.getId_utente());
-		c.setNome(cTemp.getNome());
-		c.setCognome(cTemp.getCognome());
-		c.setRuolo(cTemp.getRuolo());
-		c.setUsername(cTemp.getUsername());
-		c.setPassword(cTemp.getPassword());
-		c.setRagSociale(cTemp.getRagSociale());
-		c.setRubrica(cTemp.getRubrica());
-	}
-	
 }

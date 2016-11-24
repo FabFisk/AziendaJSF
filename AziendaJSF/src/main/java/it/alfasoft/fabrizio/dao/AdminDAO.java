@@ -5,9 +5,13 @@ import it.alfasoft.fabrizio.utility.HibernateUtil;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
 
-public class AdminDAO {
+public class AdminDAO implements IAdminDAO {
 	
 	//1- Create
+		/* (non-Javadoc)
+		 * @see it.alfasoft.fabrizio.dao.IAdminDAO#createUser(it.alfasoft.fabrizio.bean.Admin)
+		 */
+		@Override
 		public boolean createUser(Admin a){
 			boolean res = false;
 			Session session = HibernateUtil.openSession();
@@ -26,6 +30,10 @@ public class AdminDAO {
 			return res;
 		}	
 		//2- Read
+		/* (non-Javadoc)
+		 * @see it.alfasoft.fabrizio.dao.IAdminDAO#readUser(long)
+		 */
+		@Override
 		public Admin readUser(long id_a){
 			Admin a = null;
 			Session session = HibernateUtil.openSession();
@@ -43,6 +51,10 @@ public class AdminDAO {
 			return a;
 		}	
 		//3- Update
+		/* (non-Javadoc)
+		 * @see it.alfasoft.fabrizio.dao.IAdminDAO#updateUser(it.alfasoft.fabrizio.bean.Admin)
+		 */
+		@Override
 		public boolean updateUser(Admin a){
 			boolean res = false;
 			Session session = HibernateUtil.openSession();
@@ -62,6 +74,10 @@ public class AdminDAO {
 		}	
 		
 		//4- Delete
+		/* (non-Javadoc)
+		 * @see it.alfasoft.fabrizio.dao.IAdminDAO#deleteUser(it.alfasoft.fabrizio.bean.Admin)
+		 */
+		@Override
 		public boolean deleteUser(Admin a){
 			boolean res = false;
 			Session session = HibernateUtil.openSession();
@@ -78,15 +94,5 @@ public class AdminDAO {
 				session.close();
 			}
 			return res;
-		}
-		
-		public void fillDatiAdmin(Admin a) {
-			Admin aTemp = this.readUser(a.getId_utente());
-			a.setNome(aTemp.getNome());
-			a.setCognome(aTemp.getCognome());
-			a.setRuolo(aTemp.getRuolo());
-			a.setUsername(aTemp.getUsername());
-			a.setPassword(aTemp.getPassword());
-			a.setLivello(aTemp.getLivello());
 		}
 }

@@ -2,7 +2,7 @@ package it.alfasoft.fabrizio.controller;
 
 import it.alfasoft.fabrizio.bean.Cliente;
 import it.alfasoft.fabrizio.service.GestioneUtenti;
-import it.alfasoft.fabrizio.service.PSWCodifer;
+import it.alfasoft.fabrizio.utility.PSWCodifer;
 
 import java.io.Serializable;
 

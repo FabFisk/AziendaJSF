@@ -10,9 +10,13 @@ import org.hibernate.Query;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
 
-public class DipendenteDAO {
+public class DipendenteDAO implements IDipendenteDAO {
 
 	//1- Create
+		/* (non-Javadoc)
+		 * @see it.alfasoft.fabrizio.dao.IDipendenteDAO#createUser(it.alfasoft.fabrizio.bean.Dipendente)
+		 */
+		@Override
 		public boolean createUser(Dipendente d){
 			boolean res = false;
 			Session session = HibernateUtil.openSession();
@@ -32,6 +36,10 @@ public class DipendenteDAO {
 		}	
 		//2- Read
 		
+		/* (non-Javadoc)
+		 * @see it.alfasoft.fabrizio.dao.IDipendenteDAO#getAll()
+		 */
+		@Override
 		@SuppressWarnings("unchecked")
 		public List<Dipendente> getAll() {
 			List<Dipendente> dipendenti = new ArrayList<Dipendente>();
@@ -51,6 +59,10 @@ public class DipendenteDAO {
 			return dipendenti;
 		}
 		
+		/* (non-Javadoc)
+		 * @see it.alfasoft.fabrizio.dao.IDipendenteDAO#getOnline()
+		 */
+		@Override
 		@SuppressWarnings("unchecked")
 		public List<Dipendente> getOnline() {
 			List<Dipendente> dipendenti = new ArrayList<Dipendente>();
@@ -71,6 +83,10 @@ public class DipendenteDAO {
 			return dipendenti;
 		}
 		
+		/* (non-Javadoc)
+		 * @see it.alfasoft.fabrizio.dao.IDipendenteDAO#readUser(long)
+		 */
+		@Override
 		public Dipendente readUser(long id_d){
 			Dipendente a = null;
 			Session session = HibernateUtil.openSession();
@@ -88,6 +104,10 @@ public class DipendenteDAO {
 			return a;
 		}	
 		//3- Update
+		/* (non-Javadoc)
+		 * @see it.alfasoft.fabrizio.dao.IDipendenteDAO#updateUser(it.alfasoft.fabrizio.bean.Dipendente)
+		 */
+		@Override
 		public boolean updateUser(Dipendente d){
 			boolean res = false;
 			Session session = HibernateUtil.openSession();
@@ -107,6 +127,10 @@ public class DipendenteDAO {
 		}	
 		
 		//4- Delete
+		/* (non-Javadoc)
+		 * @see it.alfasoft.fabrizio.dao.IDipendenteDAO#deleteUser(it.alfasoft.fabrizio.bean.Dipendente)
+		 */
+		@Override
 		public boolean deleteUser(Dipendente d){
 			boolean res = false;
 			Session session = HibernateUtil.openSession();
@@ -124,16 +148,4 @@ public class DipendenteDAO {
 			}
 			return res;
 		}
-		
-		public void fillDatiDipendente(Dipendente d) {			
-			Dipendente dTemp = this.readUser(d.getId_utente());
-			d.setNome(dTemp.getNome());
-			d.setCognome(dTemp.getCognome());
-			d.setRuolo(dTemp.getRuolo());
-			d.setUsername(dTemp.getUsername());
-			d.setPassword(dTemp.getPassword());
-			d.setStipendio(dTemp.getStipendio());
-			d.setRubrica(dTemp.getRubrica());
-		}
-
 }

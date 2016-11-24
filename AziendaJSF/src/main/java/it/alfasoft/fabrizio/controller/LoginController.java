@@ -5,7 +5,7 @@ import javax.faces.bean.SessionScoped;
 
 import it.alfasoft.fabrizio.bean.Utente;
 import it.alfasoft.fabrizio.service.GestioneUtenti;
-import it.alfasoft.fabrizio.service.PSWCodifer;
+import it.alfasoft.fabrizio.utility.PSWCodifer;
 import it.alfasoft.fabrizio.utility.Ruolo;
 
 @ManagedBean(name="lc")
@@ -76,6 +76,7 @@ public class LoginController {
 		Utente u = gU.readUser(this.username, PSWCodifer.codificaPsw(this.password));
 		if(u!=null){
 			this.id_utente = u.getId_utente();
+			this.ruolo = u.getRuolo();
 			this.loggato = true;			
 			switch (u.getRuolo()) {
 			case ADMIN:

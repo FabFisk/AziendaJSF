@@ -7,9 +7,13 @@ import org.hibernate.Transaction;
 import it.alfasoft.fabrizio.bean.Utente;
 import it.alfasoft.fabrizio.utility.HibernateUtil;
 
-public class UtenteDAO {
+public class UtenteDAO implements IUtenteDAO {
 	
 	//1- Create
+	/* (non-Javadoc)
+	 * @see it.alfasoft.fabrizio.dao.IUtenteDAO#createUser(it.alfasoft.fabrizio.bean.Utente)
+	 */
+	@Override
 	public boolean createUser(Utente u){
 		boolean res = false;
 		Session session = HibernateUtil.openSession();
@@ -28,6 +32,10 @@ public class UtenteDAO {
 		return res;
 	}	
 	//2- Read
+	/* (non-Javadoc)
+	 * @see it.alfasoft.fabrizio.dao.IUtenteDAO#readUser(long)
+	 */
+	@Override
 	public Utente readUser(long id_u){
 		Utente u = null;
 		Session session = HibernateUtil.openSession();
@@ -45,6 +53,10 @@ public class UtenteDAO {
 		return u;
 	}	
 	
+	/* (non-Javadoc)
+	 * @see it.alfasoft.fabrizio.dao.IUtenteDAO#readUserUserPsw(java.lang.String, java.lang.String)
+	 */
+	@Override
 	public Utente readUserUserPsw(String user, String psw){
 		Utente u = null;
 		Session session = HibernateUtil.openSession();
@@ -66,6 +78,10 @@ public class UtenteDAO {
 		return u;
 	}
 	
+	/* (non-Javadoc)
+	 * @see it.alfasoft.fabrizio.dao.IUtenteDAO#readUserNomeCog(java.lang.String, java.lang.String)
+	 */
+	@Override
 	public Utente readUserNomeCog(String nome, String cognome){
 		Utente u = null;
 		Session session = HibernateUtil.openSession();
@@ -87,6 +103,10 @@ public class UtenteDAO {
 		return u;
 	}
 	
+	/* (non-Javadoc)
+	 * @see it.alfasoft.fabrizio.dao.IUtenteDAO#readUserUser(java.lang.String)
+	 */
+	@Override
 	public Utente readUserUser (String username){
 		Utente u = null;
 		Session session = HibernateUtil.openSession();
@@ -107,6 +127,10 @@ public class UtenteDAO {
 		return u;
 	}
 	//3- Update
+	/* (non-Javadoc)
+	 * @see it.alfasoft.fabrizio.dao.IUtenteDAO#updateUser(it.alfasoft.fabrizio.bean.Utente)
+	 */
+	@Override
 	public boolean updateUser(Utente u){
 		boolean res = false;
 		Session session = HibernateUtil.openSession();
@@ -126,6 +150,10 @@ public class UtenteDAO {
 	}	
 	
 	//4- Delete
+	/* (non-Javadoc)
+	 * @see it.alfasoft.fabrizio.dao.IUtenteDAO#deleteUser(it.alfasoft.fabrizio.bean.Utente)
+	 */
+	@Override
 	public boolean deleteUser(Utente u){
 		boolean res = false;
 		Session session = HibernateUtil.openSession();
@@ -143,13 +171,4 @@ public class UtenteDAO {
 		}
 		return res;
 	}	
-	
-	public void fillDatiUtente(Utente u){		
-		Utente uTemp = this.readUserUser(u.getUsername());
-		u.setNome(uTemp.getNome());
-		u.setCognome(uTemp.getCognome());
-		u.setRuolo(uTemp.getRuolo());
-		u.setId_utente(uTemp.getId_utente());
-		u.setRubrica(uTemp.getRubrica());
-	}
 }

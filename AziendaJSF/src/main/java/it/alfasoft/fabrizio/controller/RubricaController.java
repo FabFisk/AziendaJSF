@@ -7,8 +7,8 @@ import java.util.List;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ViewScoped;
 
-import it.alfasoft.fabrizio.rubrica.Rubrica;
-import it.alfasoft.fabrizio.rubrica.Voce;
+import it.alfasoft.fabrizio.bean.Rubrica;
+import it.alfasoft.fabrizio.bean.Voce;
 import it.alfasoft.fabrizio.service.ServizioRubrica;
 
 @ManagedBean(name="RControl")

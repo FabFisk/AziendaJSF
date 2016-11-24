@@ -1,9 +1,6 @@
 package it.alfasoft.fabrizio.bean;
 
-import it.alfasoft.fabrizio.rubrica.Rubrica;
 import it.alfasoft.fabrizio.utility.Ruolo;
-import it.alfasoft.fabrizio.utility.Validate;
-
 import java.io.Serializable;
 
 import javax.faces.bean.ManagedBean;
@@ -15,7 +12,7 @@ import org.hibernate.annotations.NotFoundAction;
 @Entity
 @Inheritance(strategy=InheritanceType.JOINED)
 @ManagedBean(name="u")
-public class Utente implements Serializable, Validate {
+public class Utente implements Serializable {
 
 	/**
 	 * 
@@ -89,38 +86,11 @@ public class Utente implements Serializable, Validate {
 	}
 	public static long getSerialversionuid() {
 		return serialVersionUID;
+	}
+	public boolean isLoggato() {
+		return loggato;
+	}
+	public void setLoggato(boolean loggato) {
+		this.loggato = loggato;
 	}	
-//	public int getOnline() {
-//		return online;
-//	}
-//	public void setOnline(int online) {
-//		this.online = online;
-//	}	
-//	public boolean isOnline() {
-//		return online;
-//	}
-//	public void setOnline(boolean online) {
-//		this.online = online;
-//	}
-	
-
-	public boolean isValid() {
-		boolean token = false;
-		if(!this.nome.isEmpty() && !this.cognome.isEmpty()
-				&& !this.username.isEmpty() && !this.password.isEmpty()){
-			token = true;
-		}
-		return token;
-	}
-	
-	public boolean isValidLogin() {
-		boolean token = false;
-		if((!this.username.isEmpty() && this.username!=null) 
-				&& (!this.password.isEmpty() && this.password!=null)){
-			token = true;
-		}
-		return token;
-	}
-
-	
 }

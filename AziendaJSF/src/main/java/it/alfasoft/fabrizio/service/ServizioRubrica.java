@@ -2,10 +2,10 @@ package it.alfasoft.fabrizio.service;
 
 import java.util.List;
 
-import it.alfasoft.fabrizio.rubrica.Rubrica;
-import it.alfasoft.fabrizio.rubrica.RubricaDao;
-import it.alfasoft.fabrizio.rubrica.Voce;
-import it.alfasoft.fabrizio.rubrica.VoceDao;
+import it.alfasoft.fabrizio.bean.Rubrica;
+import it.alfasoft.fabrizio.bean.Voce;
+import it.alfasoft.fabrizio.dao.RubricaDao;
+import it.alfasoft.fabrizio.dao.VoceDao;
 
 public class ServizioRubrica {	
 

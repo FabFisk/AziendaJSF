@@ -1,4 +1,4 @@
-package it.alfasoft.fabrizio.rubrica;
+package it.alfasoft.fabrizio.dao;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -7,6 +7,8 @@ import org.hibernate.Query;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
 
+import it.alfasoft.fabrizio.bean.Rubrica;
+import it.alfasoft.fabrizio.bean.Voce;
 import it.alfasoft.fabrizio.utility.HibernateUtil;
 
 public class VoceDao {
