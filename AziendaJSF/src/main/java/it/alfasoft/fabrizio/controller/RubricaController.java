@@ -7,6 +7,7 @@ import java.util.List;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ViewScoped;
 
+import it.alfasoft.fabrizio.bean.Cliente;
 import it.alfasoft.fabrizio.bean.Rubrica;
 import it.alfasoft.fabrizio.bean.Voce;
 import it.alfasoft.fabrizio.service.ServizioRubrica;
@@ -50,6 +51,16 @@ public class RubricaController implements Serializable {
 	public List<Voce> selectRubrica(Rubrica r){
 		this.setVoci(sR.getAll(r));
 		return voci;		
+	}
+	
+	public List<Voce> searchVoce(Rubrica r, String voce){
+		this.setVoci(sR.readVoce(r, voce));		
+		return voci;
+	}
+	
+	public String create(Rubrica r, Voce v){
+		sR.createVoce(r, v);
+		return "AggiungiVoce?faces-redirect=true";		
 	}
 
 }

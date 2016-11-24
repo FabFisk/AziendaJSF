@@ -46,5 +46,9 @@ public class ServizioRubrica {
 		Voce v = vDao.readVoce(id);
 		return vDao.deleteVoce(v);
 	}
+
+	public List<Voce> readVoce(Rubrica r, String voce) {
+		return vDao.readVoce(r, voce);
+	}
 	
 }

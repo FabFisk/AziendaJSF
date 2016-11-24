@@ -39,8 +39,8 @@
 		<mapping class="it.alfasoft.fabrizio.bean.Admin" />
 		<mapping class="it.alfasoft.fabrizio.bean.Dipendente" />
 		<mapping class="it.alfasoft.fabrizio.bean.Cliente" />			
-		<mapping class="it.alfasoft.fabrizio.rubrica.Rubrica" />			
-		<mapping class="it.alfasoft.fabrizio.rubrica.Voce" />	
+		<mapping class="it.alfasoft.fabrizio.bean.Rubrica" />			
+		<mapping class="it.alfasoft.fabrizio.bean.Voce" />	
 		<mapping class="it.alfasoft.fabrizio.bean.BustaPaga" />	
 	</session-factory>
 </hibernate-configuration>

@@ -3,6 +3,7 @@ package it.alfasoft.fabrizio.controller;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
 
+import it.alfasoft.fabrizio.bean.Rubrica;
 import it.alfasoft.fabrizio.bean.Utente;
 import it.alfasoft.fabrizio.service.GestioneUtenti;
 import it.alfasoft.fabrizio.utility.PSWCodifer;
@@ -18,6 +19,7 @@ public class LoginController {
 	private String password;
 	private boolean loggato;
 	private Ruolo ruolo;
+	private Rubrica rubrica;
 	
 	public LoginController(){
 		loggato = false;
@@ -71,6 +73,14 @@ public class LoginController {
 	public void setRuolo(Ruolo ruolo) {
 		this.ruolo = ruolo;
 	}
+	
+	public Rubrica getRubrica() {
+		return rubrica;
+	}
+
+	public void setRubrica(Rubrica rubrica) {
+		this.rubrica = rubrica;
+	}
 
 	public String login(){
 		Utente u = gU.readUser(this.username, PSWCodifer.codificaPsw(this.password));
@@ -82,8 +92,10 @@ public class LoginController {
 			case ADMIN:
 				return "portals/admin/Home?faces-redirect=true";	
 			case CLIENTE:
+				this.rubrica = u.getRubrica();
 				return "portals/cliente/Home?faces-redirect=true";
 			case DIPENDENTE:
+				this.rubrica = u.getRubrica();
 				return "portals/dipendente/Home?faces-redirect=true";
 			default:
 				return "Login?faces-redirect=true";	
@@ -99,9 +111,4 @@ public class LoginController {
 		this.loggato = false;
 		return "Login?faces-redirect=true";	
 	}
-
-
-
-
-
 }

@@ -1,0 +1,49 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.org/ui">
+
+<ui:composition template="../../layout/layout.xhtml">
+	<ui:define name="bar">
+		<ui:include src="Toolbar.xhtml" />
+	</ui:define>
+	<ui:define name="menu">
+		<ui:include src="Menu.xhtml"/>
+	</ui:define>
+	<ui:define name="content">
+<h:form>
+			<p:panel header="Nuovo Contatto">
+
+				<h:panelGrid id="grid" columns="4" cellpadding="5">
+					<h:outputLabel for="nome" value="Nome:" style="font-weight:bold" />
+					<p:inputText id="nome" value="#{v.nome}"
+						required="true" label="Nome" />
+					<p:message for="nome" />
+					<h:outputText value="#{v.nome}" />
+					
+					<h:outputLabel for="cognome" value="Cognome:" style="font-weight:bold" />
+					<p:inputText id="cognome" value="#{v.cognome}"
+						required="true" label="Cognome" />
+					<p:message for="cognome" />
+					<h:outputText value="#{v.cognome}" />
+
+										
+					<h:outputLabel for="telefono" value="Telefono:" style="font-weight:bold" />
+					<p:inputText id="telefono" value="#{v.tel}"
+						required="true" label="telefono" />
+					<p:message for="telefono" />
+					<h:outputText value="#{v.tel}" />
+					
+				</h:panelGrid>
+
+				<p:commandButton action="#{RControl.create(lc.rubrica, v)}" value="Registra" update="grid" icon="ui-icon-check"
+					validateClient="true" style="margin-right:10px" />
+			</p:panel>
+		</h:form>
+	</ui:define>
+</ui:composition>
+</html>

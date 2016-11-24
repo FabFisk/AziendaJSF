@@ -92,6 +92,28 @@ public class VoceDao {
 		}	
 		return voci;
 	}
+	
+	public List<Voce> readVoce(Rubrica r, String voce) {
+		List<Voce> voci = new ArrayList<Voce>();
+		Session session = HibernateUtil.openSession();
+		Transaction tx = null;
+		try{
+			tx = session.getTransaction();
+			tx.begin();
+			Query query = session
+					.createQuery("from Voce where nome like :Ncampo AND rubrica =:rubInserita");
+			query.setLong("rubInserita", r.getId_Rubrica());
+			query.setString(":Ncampo", "%"+voce+"%");
+			query.setString(":Ccampo", "%"+voce+"%");
+			voci = query.list();		
+			tx.commit();
+		}catch(Exception ex){
+			tx.rollback();
+		}finally{
+			session.close();
+		}	
+		return voci;
+	}
 		
 	//3- Update
 	public boolean updateVoce(Voce v) {
@@ -130,6 +152,8 @@ public class VoceDao {
 		}
 		return token;
 	}
+
+
 
 
 

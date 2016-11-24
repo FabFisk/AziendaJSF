@@ -5,7 +5,6 @@ import java.util.List;
 
 import it.alfasoft.fabrizio.bean.*;
 import it.alfasoft.fabrizio.dao.*;
-import it.alfasoft.fabrizio.rubrica.*;
 import it.alfasoft.fabrizio.utility.PSWCodifer;
 import it.alfasoft.fabrizio.utility.Ruolo;
 
