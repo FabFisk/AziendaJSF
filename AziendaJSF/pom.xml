@@ -7,7 +7,6 @@
 	<version>0.0.1-SNAPSHOT</version>
 	<name>AziendaJSF Maven Webapp</name>
 	<url>http://maven.apache.org</url>
-
 	<dependencies>
 		<dependency>
 			<groupId>javax.servlet</groupId>
@@ -64,11 +63,8 @@
 			<artifactId>jersey-media-moxy</artifactId>
 			<version>2.16</version>
 		</dependency>
-
-
-
+		
 	</dependencies>
-
 	<build>
 		<finalName>AziendaJSF</finalName>
 		<pluginManagement>

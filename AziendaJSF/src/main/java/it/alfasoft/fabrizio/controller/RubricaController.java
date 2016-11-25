@@ -1,16 +1,15 @@
 package it.alfasoft.fabrizio.controller;
 
+import it.alfasoft.fabrizio.bean.Rubrica;
+import it.alfasoft.fabrizio.bean.Voce;
+import it.alfasoft.fabrizio.service.ServizioRubrica;
+
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ViewScoped;
-
-import it.alfasoft.fabrizio.bean.Cliente;
-import it.alfasoft.fabrizio.bean.Rubrica;
-import it.alfasoft.fabrizio.bean.Voce;
-import it.alfasoft.fabrizio.service.ServizioRubrica;
 
 @ManagedBean(name="RControl")
 @ViewScoped

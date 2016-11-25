@@ -93,6 +93,7 @@ public class VoceDao {
 		return voci;
 	}
 	
+	@SuppressWarnings("unchecked")
 	public List<Voce> readVoce(Rubrica r, String voce) {
 		List<Voce> voci = new ArrayList<Voce>();
 		Session session = HibernateUtil.openSession();

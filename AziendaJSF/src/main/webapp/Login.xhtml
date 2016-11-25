@@ -12,6 +12,7 @@
 		<h:form>
 			<p:panel header="Login">
 				<h:panelGrid id="grid" columns="4" cellpadding="5">
+				
 					<h:outputLabel for="username" value="Username:"
 						style="font-weight:bold" />
 					<p:inputText id="username" value="#{lc.username}" required="true"
@@ -31,6 +32,7 @@
 				<p:commandButton action="#{lc.login()}" value="Login"
 					update="grid" icon="ui-icon-check" validateClient="true"
 					style="margin-right:10px" />
+					
 			</p:panel>
 		</h:form>
 
